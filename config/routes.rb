@@ -60,7 +60,6 @@ Rails.application.routes.draw do
     post 'orders/create'
     get 'orders/show'
     get 'orders/thanks'
-
   
     get 'deliveries/index'
     post 'deliveries/create'
