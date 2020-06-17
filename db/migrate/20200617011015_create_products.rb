@@ -1,7 +1,7 @@
 class CreateProducts < ActiveRecord::Migration[5.2]
   def change
     create_table :products do |t|
-      t.integer :product_category_id
+      t.integer :product_category_id, foreign_key: true
       t.string :name
       t.text :description
       t.integer :unit_price
