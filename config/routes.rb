@@ -44,8 +44,8 @@ Rails.application.routes.draw do
     put 'products/update'
   end
 
-  # admin finish
-
+  # admin
+  
   # customer start
   namespace :customer do
     get 'cart_products/index'
@@ -60,7 +60,6 @@ Rails.application.routes.draw do
     post 'orders/create'
     get 'orders/show'
     get 'orders/thanks'
-
   
     get 'deliveries/index'
     post 'deliveries/create'
