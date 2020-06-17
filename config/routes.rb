@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
   end
-  
+
   namespace :customer do
     devise_for :customers, controllers: {
     sessions:      'admins/sessions',
