@@ -1,30 +1,41 @@
 Rails.application.routes.draw do
+  # deviseでログインしている前提でそのほかのページを読めるので最初に持っていきたい
+  namespace :admin do
+    devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+  end
+  
+  namespace :customer do
+    devise_for :customers, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+  end
+
+  root 'customer/homes#top'
 
   # admin start
   namespace :admin do
-    get 'admin' => 'home#top'
-  end
-  namespace :admin do
+    root 'homes#top'
     patch 'order_products/update'
-  end
-  namespace :admin do
     get 'orders/index'
     get 'orders/show'
     patch 'orders/update'
-  end
-  namespace :admin do
+
     get 'customers/index'
     get 'customers/show'
     get 'customers/edit'
     patch 'customers/update'
-  end
-  namespace :admin do
+
     get 'product_categories/index'
     post 'product_categories/create'
     get 'product_categories/edit'
     patch 'product_categories/update'
-  end
-  namespace :admin do
+    
     get 'products/index'
     get 'products/new'
     post 'products/create'
@@ -42,41 +53,33 @@ Rails.application.routes.draw do
     patch 'cart_products/update'
     delete 'cart_products/destroy'
     delete 'cart_products/all_destroy'
-  end
-  namespace :customer do
+
     get 'orders/index'
     get 'orders/new'
+    get 'orders/order_confimation'
     post 'orders/create'
     get 'orders/show'
     get 'orders/thanks'
-  end
-  namespace :customer do
+
+  
     get 'deliveries/index'
     post 'deliveries/create'
     patch 'deliveries/edit'
     get 'deliveries/show'
     patch 'deliveries/update'
     delete 'deliveries/destroy'
-  end
-  namespace :customer do
+  
     get 'products/index'
     get 'products/show'
-  end
-  namespace :customer do
+  
     get 'customers/leave' => 'customers#leave'
     get 'customers/mypage' =>'customers#show'
     patch 'customers/update'
     get 'customers/edit'
     get 'customers/delete_confimation' =>'customers#delete_confimation'
   end
-  namespace :customer do
-    root 'homes#top'
-  end
-
+    
   #customer finish
   
-  devise_for :admins 
-  devise_for :customers
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

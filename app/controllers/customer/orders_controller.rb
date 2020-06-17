@@ -5,6 +5,10 @@ class Customer::OrdersController < ApplicationController
   def new
   end
 
+  def order_confimation
+  end
+  
+
   def create
   end
 
