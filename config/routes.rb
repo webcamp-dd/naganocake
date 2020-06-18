@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   }
   end
 
+  
+
+
+
+  
   root 'customer/homes#top'
 
   # admin start
