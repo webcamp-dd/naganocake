@@ -76,6 +76,12 @@ Rails.application.routes.draw do
     patch 'customers/update'
     get 'customers/edit'
     get 'customers/delete_confimation' =>'customers#delete_confimation'
+
+
+    # カート機能用
+    post '/add_item' => 'cartproducts#add_item'
+    post '/update_item' => 'cartproducts#update_item'
+    delete '/delete_item' => 'cartproducts#delete_item'
   end
     
   #customer finish
