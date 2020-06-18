@@ -70,7 +70,8 @@ Rails.application.routes.draw do
   
     get 'products/index'
     get 'products/show'
-  
+    resources :products, only: [:new, :create,]
+
     get 'customers/leave' => 'customers#leave'
     get 'customers/mypage' =>'customers#show'
     patch 'customers/update'

@@ -4,6 +4,6 @@ class Product < ApplicationRecord
             foreign_key: "product_id",
             dependent: :destroy
     has_many :order_products,dependent: :destroy
-    
+    attachment :product_image
 
 end
