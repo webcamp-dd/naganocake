@@ -5,12 +5,9 @@
 
 <div class="container">
     <div class="row section1">
-        <div class="col-xs-4">
-            <h4>>ジャンル検索</h4>
-            <%= link_to 'ケーキ', customer_products_index_path %><br>
-            <%= link_to '焼き菓子', customer_products_index_path %><br>
-            <%= link_to 'プリン', customer_products_index_path %><br>
-            <%= link_to 'キャンディ', customer_products_index_path %>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-3">
+            <%= render 'products/category', product_categories: @product_categories %>
         </div>
         <div class="col-xs-6 message">
             <p>
