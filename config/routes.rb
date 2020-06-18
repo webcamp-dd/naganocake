@@ -1,20 +1,16 @@
 Rails.application.routes.draw do
   # deviseでログインしている前提でそのほかのページを読めるので最初に持っていきたい
-  namespace :admin do
-    devise_for :admins, controllers: {
-    sessions:      'admins/sessions',
-    passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
-  }
-  end
+  devise_for :admins, path: :admin, controllers: {
+    sessions:      ‘admin/sessions’,
+    passwords:     ‘admin/passwords’,
+    registrations: ‘admin/registrations’
+}
 
-  namespace :customer do
-    devise_for :customers, controllers: {
-    sessions:      'admins/sessions',
-    passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
-  }
-  end
+  devise_for :customers, path: :customer, controllers: {
+    sessions:      ‘customer/sessions’,
+    passwords:     ‘customer/passwords’,
+    registrations: ‘customer/registrations’
+}
 
   root 'customer/homes#top'
 
