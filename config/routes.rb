@@ -1,24 +1,12 @@
 Rails.application.routes.draw do
-  # deviseでログインしている前提でそのほかのページを読めるので最初に持っていきたい
-  namespace :admin do
-    devise_for :admins, controllers: {
-    sessions:      'admins/sessions',
-    passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
-  }
-  end
-
-  namespace :customer do
-    devise_for :customers, controllers: {
-    sessions:      'admins/sessions',
-    passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
-  }
-  end
+  devise_for :admin
+  
+  devise_for :customer
 
   root 'customer/homes#top'
 
-  # admin start
+  
+# admin start
   namespace :admin do
     root 'homes#top'
     patch 'order_products/update'
