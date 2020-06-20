@@ -10,7 +10,7 @@ class Customer::ProductsController < ApplicationController
 # @category = ProductCategory.new
 
   def show
-    
+    @product = Product.find(params[:id])
   end
 
   def create

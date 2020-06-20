@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'customer/homes#top'
 
 
-# admin start
+
   namespace :admin do
     root 'homes#top'
     patch 'order_products/update'
@@ -33,9 +33,7 @@ Rails.application.routes.draw do
     put 'products/update'
   end
 
-  # admin
-
-  # customer start
+  
   namespace :customer do
     get 'cart_products/index'
     post 'cart_products/create'
@@ -58,25 +56,24 @@ Rails.application.routes.draw do
     delete 'deliveries/destroy'
 
     get 'products/index'
-    get 'products/show'
-    resources :products, only: [:new, :create,]
+    # get 'products/show'
+    resources :products, only: [:new, :create, :show]
 
     resources :productcategories, only: [:new, :create,]
 
     get 'customers/leave' => 'customers#leave'
-    get 'customers/mypage/:id' =>'customers#show'
-    patch 'customers/update'
-    get 'customers/edit'
+    # get 'customers/mypage/:id' =>'customers#show'
+    resources :customers, only: [:edit, :show, :update]
+    # patch 'customers/update'
+    # get 'customers/edit'
     get 'customers/delete_confimation' =>'customers#delete_confimation'
 
 
-    # カート機能用
+    
     post '/add_item' => 'cartproducts#add_item'
     post '/update_item' => 'cartproducts#update_item'
     delete '/delete_item' => 'cartproducts#delete_item'
   end
 
-  #customer finish
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
 end
