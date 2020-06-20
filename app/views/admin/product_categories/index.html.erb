@@ -33,7 +33,8 @@
 				<% @product_categories.each do |product_category| %>
 				<tr>
 					<td><%= product_category.name %></td>
-					<td><% if product_category.is_active == true %>
+					<td>
+						<% if product_category.is_active == true %>
 						有効
 						<% else %>
 						無効
