@@ -11,6 +11,7 @@ class Customer::OrdersController < ApplicationController
   
 
   def create
+    byebug
   end
 
   def show
