@@ -1,19 +1,34 @@
 
-<%= form_with(model: order, local: true, url: customer_orders_create_path) do |f| %>
- 
-<h1>注文情報入力</h1>
-<%= f.radio_button :payment, :creditcard %>
-<%= f.label :payment, "クレジットカード", {value: :creditcard, style: "display: inline-block;"} %>
-<%= f.radio_button :payment, :bank %>
-<%= f.label :payment, "銀行振込", {value: :bank, style: "display: inline-block;"} %>
+<%= form_with(model: @order, local: true, url: customer_orders_create_path) do |f| %>
+
+<h3>注文情報入力</h3>
 
 <h3>支払い方法入力</h3>
-
+    <ul>
+        <li>
+            <%= f.radio_button :payment, :creditcard %>
+            <%= f.label :payment, "クレジットカード", {value: :creditcard, style: "display: inline-block;"} %>
+        </li>
+        <li>
+            <%= f.radio_button :payment, :bank %>
+            <%= f.label :payment, "銀行振込", {value: :bank, style: "display: inline-block;"} %>
+        </li>
+    </ul>
 
 <h3>お届け先</h3>
+<ul>
+        <li>
+           
+        </li>
+        <li>
+            <%= f.radio_button :payment, :bank %>
+            <%= f.label :payment, "銀行振込", {value: :bank, style: "display: inline-block;"} %>
+        </li>
+        
+    </ul>
 
-
+<%= radio_button_tag :address, 1 %>
 確認画面へ進む
 
-  
+<%= f.submit "送信" %>
 <% end %>

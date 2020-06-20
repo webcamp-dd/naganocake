@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :customer
 
+  
   root 'customer/homes#top'
 
 
@@ -59,6 +60,8 @@ Rails.application.routes.draw do
     get 'products/index'
     get 'products/show'
     resources :products, only: [:new, :create,]
+
+    resources :productcategories, only: [:new, :create,]
 
     get 'customers/leave' => 'customers#leave'
     get 'customers/mypage' =>'customers#show'
