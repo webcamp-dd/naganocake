@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   devise_for :customer
 
+  
   root 'customer/homes#top'
 
   

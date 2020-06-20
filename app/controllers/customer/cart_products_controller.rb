@@ -1,14 +1,9 @@
 class Customer::CartProductsController < ApplicationController
   # before_action :authenticate_user!
 
-  session[:customer_id] = params[:customer_id]
-  def current_customer
-  @current_customer ||= Customer.find(session[:customer_id]) if session[:customer_id]
-  end
-
 
   def index
-    @cart_products = @current_customer.cart_products
+    @cart_products = current_customer.cart_products
   end
 
  # 商品一覧画面から、「商品購入」を押した時のアクション
@@ -46,7 +41,7 @@ class Customer::CartProductsController < ApplicationController
   end
 
   def all_destroy
-    @cart_products = @current_customer.cart_items.all
+    @cart_products = current_customer.cart_items.all
     @cart_products.destroy
     flash[:notice] = 'カート内商品を全件削除しました'
     redirect_back(fallback_location: root_path)
@@ -56,6 +51,6 @@ class Customer::CartProductsController < ApplicationController
   private
 
   def setup_cart_product!
-    @cart_product = @current_customer.cart_items.find_by(product_id: params[:product_id])
+    @cart_product = current_customer.cart_items.find_by(product_id: params[:product_id])
   end
 end
