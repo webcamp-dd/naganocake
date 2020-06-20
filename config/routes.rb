@@ -41,19 +41,9 @@ Rails.application.routes.draw do
     delete 'cart_products/destroy'
     delete 'cart_products/all_destroy'
 
-    get 'orders/index'
-    get 'orders/new'
-    get 'orders/order_confimation'
-    post 'orders/create'
-    get 'orders/show'
-    get 'orders/thanks'
-
-    get 'deliveries/index'
-    post 'deliveries/create'
-    patch 'deliveries/edit'
-    get 'deliveries/show'
-    patch 'deliveries/update'
-    delete 'deliveries/destroy'
+    resources :orders, only: [:index, :create, :new, :show, :order_confimation, :thanks, :edit, :update, :destroy]
+    resources :deliveries, only: [:index, :create, :new, :edit, :update, :destroy]
+    
 
     get 'products/index'
     # get 'products/show'
