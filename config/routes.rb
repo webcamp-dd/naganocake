@@ -64,7 +64,7 @@ Rails.application.routes.draw do
     resources :productcategories, only: [:new, :create,]
 
     get 'customers/leave' => 'customers#leave'
-    get 'customers/mypage' =>'customers#show'
+    get 'customers/mypage/:id' =>'customers#show'
     patch 'customers/update'
     get 'customers/edit'
     get 'customers/delete_confimation' =>'customers#delete_confimation'
