@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   devise_for :admin
-  
+
   devise_for :customer
 
+  
   root 'customer/homes#top'
 
-  
+
 # admin start
   namespace :admin do
     root 'homes#top'
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
     post 'product_categories/create'
     get 'product_categories/edit'
     patch 'product_categories/update'
-    
+
     get 'products/index'
     get 'products/new'
     post 'products/create'
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
   end
 
   # admin
-  
+
   # customer start
   namespace :customer do
     get 'cart_products/index'
@@ -48,14 +49,14 @@ Rails.application.routes.draw do
     post 'orders/create'
     get 'orders/show'
     get 'orders/thanks'
-  
+
     get 'deliveries/index'
     post 'deliveries/create'
     patch 'deliveries/edit'
     get 'deliveries/show'
     patch 'deliveries/update'
     delete 'deliveries/destroy'
-  
+
     get 'products/index'
     get 'products/show'
     resources :products, only: [:new, :create,]
@@ -67,9 +68,15 @@ Rails.application.routes.draw do
     patch 'customers/update'
     get 'customers/edit'
     get 'customers/delete_confimation' =>'customers#delete_confimation'
+
+
+    # カート機能用
+    post '/add_item' => 'cartproducts#add_item'
+    post '/update_item' => 'cartproducts#update_item'
+    delete '/delete_item' => 'cartproducts#delete_item'
   end
-    
+
   #customer finish
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

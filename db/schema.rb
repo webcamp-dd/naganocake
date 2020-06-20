@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_083825) do
+ActiveRecord::Schema.define(version: 2020_06_19_075423) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_06_18_083825) do
 
   create_table "product_categories", force: :cascade do |t|
     t.string "name"
-    t.boolean "valid"
+    t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

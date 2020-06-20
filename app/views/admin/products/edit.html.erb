@@ -1,2 +1,29 @@
-<h1>Admin::Products#edit</h1>
-<p>Find me in app/views/admin/products/edit.html.erb</p>
+<h1>商品編集</h1>
+
+<div class="row">
+	<%= form_with model: @product do |f| %>
+	<div class="col-sm-4">
+		<%= f.attachment_field :product_image %>
+	</div>
+
+	<div class="col-sm-4">
+		<%= f.label :商品名 %>
+		<%= f.text_field :name %>
+		<br>
+		<%= f.label :商品説明 %>
+		<%= f.text_area :description %>
+		<br>
+		<%= f.label :ジャンル %>
+		<br>
+		<%= f.label :税抜価格 %>
+		<%= f.text_field :unit_price %>
+		<br>
+		<%= f.label :販売ステータス %>
+		<%= f.select :sales_status, [["販売中","0"],["売切れ","1"]], include_blank: "--選択してください--" %>
+	</div>
+
+	<div class="col-sm-4">
+		<%= f.submit "変更を保存",class: "btn btn-primary" %>
+	</div>
+	<% end %>
+</div>

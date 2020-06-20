@@ -3,6 +3,7 @@ class Customer::OrdersController < ApplicationController
   end
 
   def new
+  @order = Order.new    
   end
 
   def order_confimation
@@ -10,6 +11,7 @@ class Customer::OrdersController < ApplicationController
   
 
   def create
+    byebug
   end
 
   def show
