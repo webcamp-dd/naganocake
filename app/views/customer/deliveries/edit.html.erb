@@ -1,2 +1,22 @@
-<h1>Customer::Deliveries#edit</h1>
-<p>Find me in app/views/customer/deliveries/edit.html.erb</p>
+<h3>配送先編集</h3>
+
+
+<%= notice %>
+
+<%= form_with(model: @deliverie, url: customer_delivery_path, html: {method: :post} )do |f| %>
+    <form class="form-horizontal">
+        <div class="form-inline">
+            <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+            <%= f.text_field :postal_code, class:"form-control" %>
+        </div>
+        <div class="form-inline">
+            <%= f.label :address, "住所" %><%= f.text_field :address, class:"form-control" %>
+        </div>
+        <div class="form-inline">
+            <%= f.label :name, "宛名" %><%= f.text_field :name, class:"form-control" %>
+        </div>
+        <div class="form_action">
+        <%= f.submit "編集する" ,class: "btn-sm btn-success"%>
+        </div>
+    </form>
+ <% end %>
