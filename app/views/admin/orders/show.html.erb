@@ -5,21 +5,25 @@
 		<tr></tr>
 	</thead>
 	<tbody>
+		<%= form_with model: @order , url:admin_order_path(@order) do |f| %>
 		<tr>
 			<td>購入者</td>
-			<td><%= @order_customer.family_name %><%= @order_customer.first_name %></td>
+			<td><%= f.customer.family_name + f.customer.first_name %></td>
 		</tr>
 		<tr>
 			<td>配送先</td>
-			<td></td>
+			<td><%= f.postal_code + f.address + f.name %></td>
 		</tr>
 		<tr>
 			<td>支払方法</td>
-			<td></td>
+			<td><%= f.payment %></td>
 		</tr>
 		<tr>
 			<td>注文ステータス</td>
-			<td></td>
+			<td>
+				<%= f.select :status, [["入金待ち","0"],["入金確認","1"],["製作中","2"],["発送準備中","3"],["発送済み","4"]] %>
+				<%= f.submit "更新",class: "btn btn-primary" %>
+			</td>
 		</tr>
 	</tbody>
 </table>
@@ -39,18 +43,23 @@
 		<%= @order_product each do |f| %>
 		<tr>
 			<td><%= f.product.name %></td>
-			<td><%= f.purchase_unit_price %></td>
+			<td>converting_to_jpy(<%= f.purchase_unit_price %>)</td>
 			<td><%= f.quantity %></td>
 			<td>converting_to_jpy(<%= f.purchase_unit_price %>*<%= f.quantity %>*1.1).round</td>
 			<td>
-				<!-- <%= form_with model: @order_product , url:admin_order_path(@order_pruduct) do || %> -->
-				<%= f.select :sales_status, [["着手不可","0"],["製作待ち","1"],["製作中","2"],["製作完了","3"]] %></td>
-			<!-- <td><%= f.submit "更新",class: "btn btn-primary" %></td> -->
+				<%= f.select :status, [["着手不可","0"],["製作待ち","1"],["製作中","2"],["製作完了","3"]] %>
+			</td>
+			<td><%= link_to "更新", admin_order_path(f),class: "btn btn-primary" %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
 
-<!-- 商品合計
-送料
-請求金額合計 -->
+<div>
+	<p>商品合計</p>
+	<%=converting_to_jpy(@order.total_price) %>
+	<p>送料</p>
+	<%= converting_to_jpy(@order.postage) %>
+	<p>請求金額合計</p>
+	<%= converting_to_jpy(@order.total_price %> + <%= @order.postage) %>
+</div>
