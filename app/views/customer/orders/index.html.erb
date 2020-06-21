@@ -1,9 +1,7 @@
 <h3>注文履歴一覧</h3>
 
-
-
-<table class="table table-bordered">
-　<thead　class="thead-dark">
+<table>
+　<thead>
 		<tr>
 			<th>注文日</th>
 			<th>配送先</th>
@@ -19,12 +17,12 @@
                 <td><%= order.created_at %></td>
                 <td><%= order.postal_code + order.address + order.name %></td>
                 <td><% @orderproducts.each do |orderproduct| %>
-                        <%= order.orderproduct.name %>
+                        <%= order.orderproduct.Product.name %>
                     <% end %>
-                </td>支払い金額
+                </td><%= order.total_price.to_s %>
                 <td>
                 </td>
-                <td>ステータス
+                <td><%= order.status%>
                 </td>
                 <td>
                     <%= link_to "表示する",customer_order_path(order), class: "btn-sm btn-primary" %>
@@ -32,3 +30,5 @@
             </tr>
         </tbody>
 </table>
+
+

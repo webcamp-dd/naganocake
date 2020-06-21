@@ -40,6 +40,7 @@ class Customer::CartProductsController < ApplicationController
     
   end
 
+  
   def all_destroy
     @cart_products = current_customer.cart_items.all
     @cart_products.destroy
