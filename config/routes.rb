@@ -10,30 +10,36 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'homes#top'
-    patch 'order_products/update'
-    get 'orders/index'
-    get 'orders/show'
-    patch 'orders/update'
 
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    patch 'customers/update'
+    resources :order_products, only: [:update]
+    # patch 'order_products/update'
 
-    get 'product_categories/index'
-    post 'product_categories/create'
-    get 'product_categories/edit'
-    patch 'product_categories/update'
+    resources :orders, only: [:index,:show,:update]
+    # get 'orders/index'
+    # get 'orders/show'
+    # patch 'orders/update'
 
-    get 'products/index'
-    get 'products/new'
-    post 'products/create'
-    get 'products/show'
-    get 'products/edit'
-    put 'products/update'
+resources :customers, only: [:index,:show,:edit,:update]
+    # get 'customers/index'
+    # get 'customers/show'
+    # get 'customers/edit'
+    # patch 'customers/update'
+
+    resources :product_categories, only: [:index,:create,:edit,:update]
+    # get 'product_categories/index'
+    # post 'product_categories/create'
+    # get 'product_categories/edit'
+    # patch 'product_categories/update'
+
+    resources :products, only: [:index,:new,:create,:edit,:update,:show]
+    # get 'products/index'
+    # get 'products/new'
+    # post 'products/create'
+    # get 'products/show'
+    # get 'products/edit'
+    # put 'products/update'
   end
 
-  
   namespace :customer do
     get 'cart_products/index'
     post 'cart_products/create'

@@ -2,7 +2,7 @@
 <h1>商品一覧</h1>
 
 <%# 新規登録ボタン %>
-<%= link_to admin_products_new_path do %>
+<%= link_to new_admin_product_path do %>
 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 <% end %>
 
@@ -19,11 +19,11 @@
 	<tbody>
 		<% @products.each do |product| %>
 		<tr>
-			<td>product</td>
-			<td><%= link_to product.name, admin_products_show_path(product) %></td>
-			<td>product.unit_price</td>
-			<td>product.product_category.name</td>
-			<td>product.sales_status</td>
+			<td><%= product.id %></td>
+			<td><%= link_to product.name, admin_product_path(product) %></td>
+			<td><%= converting_to_jpy(product.unit_price) %></td>
+			<td><%= product.product_category.name %></td>
+			<td><% if product.sales_status == true %>販売中<% else %>売切れ<% end %></td>
 		</tr>
 		<% end %>
 		<%= paginate @products %>
