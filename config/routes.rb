@@ -49,7 +49,7 @@ resources :customers, only: [:index,:show,:edit,:update]
     resources :orders, only: [:index, :create, :new, :show, :order_confimation, :thanks, :edit, :update, :destroy]
     resources :deliveries, only: [:index, :create, :new, :edit, :update, :destroy]
     
-
+    get 'products/category/:id' => 'products#category'
     get 'products/index'
     # get 'products/show'
     resources :products, only: [:new, :create, :show]

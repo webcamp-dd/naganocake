@@ -2,6 +2,7 @@ class Customer::ProductsController < ApplicationController
   def index
     @products = Product.page(params[:page]).reverse_order
     @product = Product.new
+    @category = ProductCategory.all
   end
 
 # @random = Product.order("RAND()").limit(4)
@@ -13,10 +14,9 @@ class Customer::ProductsController < ApplicationController
     @cart_product = CartProduct.new
   end
 
-  def create
-    product = Product.new(product_params)
-    product.save
-    redirect_to customer_products_index_path
+
+  def category
+    @categories = ProductCategory.find(params[:id])
   end
 
   private
