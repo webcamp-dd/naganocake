@@ -1,27 +1,28 @@
 class Admin::ProductCategoriesController < ApplicationController
+
 	def index
 		@product_category = ProductCategory.new
 		@product_categories = ProductCategory.all
-
-	# 	if @product_categories.is_active == 1
-	# 		@active = "有効"
-	# 	else
-	# 		@active = "無効"
-	# 	end
 	end
 
 	def create
 		@product_category = ProductCategory.new(product_category_params)
 		if @product_category.save
 			redirect_back(fallback_location: root_path)
-			# , notice: "新しいジャンルを登録しました"
 		end
 	end
 
 	def edit
+		@product_category = ProductCategory.find(params[:id])
 	end
 
 	def update
+		@product_category = ProductCategory.find(params[:id])
+		if @product_category.update(product_category_params)
+			redirect_to admin_product_categories_path
+		else
+			render "edit"
+		end
 	end
 
 	private

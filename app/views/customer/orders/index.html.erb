@@ -1,2 +1,34 @@
-<h1>Customer::Orders#index</h1>
-<p>Find me in app/views/customer/orders/index.html.erb</p>
+<h3>注文履歴一覧</h3>
+
+
+
+<table class="table table-bordered">
+　<thead　class="thead-dark">
+		<tr>
+			<th>注文日</th>
+			<th>配送先</th>
+			<th>注文商品</th>
+			<th>支払い金額</th>
+            <th>ステータス</th>
+            <th>注文詳細</th>
+		</tr>
+    </thead>
+    <% @orders.each do |order| %>
+        <tbody>
+            <tr>
+                <td><%= order.created_at %></td>
+                <td><%= order.postal_code + order.address + order.name %></td>
+                <td><% @orderproducts.each do |orderproduct| %>
+                        <%= order.orderproduct.name %>
+                    <% end %>
+                </td>支払い金額
+                <td>
+                </td>
+                <td>ステータス
+                </td>
+                <td>
+                    <%= link_to "表示する",customer_order_path(order), class: "btn-sm btn-primary" %>
+                </td>
+            </tr>
+        </tbody>
+</table>
