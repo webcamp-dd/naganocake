@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :customer
 
-
   root 'customer/homes#top'
 
 
@@ -59,10 +58,10 @@ resources :customers, only: [:index,:show,:edit,:update]
 
     get 'customers/leave' => 'customers#leave'
     # get 'customers/mypage/:id' =>'customers#show'
-    resources :customers, only: [:edit, :show, :update]
+    resources :customers, only: [:edit, :show, :update, :destroy]
     # patch 'customers/update'
     # get 'customers/edit'
-    get 'customers/delete_confimation' =>'customers#delete_confimation'
+    get 'customers/delete_confimation/:id' =>'customers#delete_confimation'
 
 
     

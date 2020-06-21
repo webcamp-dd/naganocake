@@ -4,7 +4,7 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-7">
             <table>
-                <%= form_for(@customer) do |f| %>
+                <%= form_for(@customer, url: customer_customer_path) do |f| %>
                     <tr>
                         <th>
                             <p>名前</p>
@@ -53,6 +53,8 @@
                             <%= f.text_field :phone_number %>
                         </td>
                     </tr>
+                    <%= f.submit %>
+                    <% end %>
             </table>
         </div>
     </div>
