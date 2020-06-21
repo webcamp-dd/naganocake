@@ -6,8 +6,6 @@ class Admin::OrdersController < ApplicationController
 
   def show
   	@order = Order.find(params[:id])
-  	# @order_customer = @order.customer
-  	# @delivery =
   	@order_product = @order.order_products
 
   end
