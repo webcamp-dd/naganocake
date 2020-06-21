@@ -1,9 +1,10 @@
 class Customer::OrdersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_customer!
 
   def index
     @customer = current_customer
-    @orders = Order.all
+    @orders = Order.where(customer_id: @customer.id)
+    @orderproducts = Order.order_products
   end
 
   def new
@@ -15,6 +16,8 @@ class Customer::OrdersController < ApplicationController
   end
 
   def order_confimation
+    @order = Order.find(params[:id]) #あってるか怪しい
+    @orderproducts = Order.order_products
     if params[:address] = 1
       ＠postal_code　= current_customer.postal_code
       @address = current_customer.address
@@ -39,6 +42,8 @@ class Customer::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @orderproducts = Order.order_products
+    # @order_products = OrderProduct.where(product_id: params:[:id]) #書き方がわからない→質問２
   end
 
   def thanks

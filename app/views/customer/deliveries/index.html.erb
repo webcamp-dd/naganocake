@@ -2,7 +2,7 @@
 
 <%= notice %>
 
-<%= form_with(model: @deliverie, url: new_customer_delivery_path, html: {method: :post} )do |f| %>
+<%= form_with(model: @delivery, url: customer_deliveries_path )do |f| %>
     <form class="form-horizontal">
         <div class="form-inline">
             <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
@@ -20,7 +20,7 @@
     </form>
  <% end %>
 
-<table class="table table-inverse">
+<table>
 	<thead>
 		<tr>
 			<th>郵便番号</th>
@@ -29,20 +29,19 @@
 			<th></th>
 		</tr>
     </thead>
-    <% @deliveries.each do |deliverie| %>
+    <% @deliveries.each do |delivery| %>
         <tbody>
             <tr>
-                <td><%= deliverie.postal_code %></td>
-                <td><%= deliverie.address %></td>
-                <td><%= deliverie.name %></td>
+                <td><%= delivery.postal_code %></td>
+                <td><%= delivery.address %></td>
+                <td><%= delivery.name %></td>
                 <td>
-                    <%= link_to "編集する",edit_customer_delivery_path(deliverie), class: "btn-sm btn-primary" %>
-                    <%= link_to "削除する", customer_delivery_path(deliverie), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
-                </td>
+                    <%= link_to "編集する",edit_customer_delivery_path(delivery), class: "btn-sm btn-primary" %>
+                    <%= link_to "削除する", customer_delivery_path(delivery), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+               </td>
             </tr>
         </tbody>
     <% end %>
 </table>
-
 
 
