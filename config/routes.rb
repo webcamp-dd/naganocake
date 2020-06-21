@@ -50,7 +50,7 @@ resources :customers, only: [:index,:show,:edit,:update]
     post 'order_confimation' => 'orders#order_confimation'
     resources :deliveries, only: [:index, :create, :new, :edit, :update, :destroy]
     
-
+    get 'products/category/:id' => 'products#category'
     get 'products/index'
     # get 'products/show'
     resources :products, only: [:new, :create, :show]

@@ -15,6 +15,7 @@ class Customer::CustomersController < ApplicationController
   end
 
   def delete_confimation
+    customer = Customer.find(params[:id])
   end
 
   def update
