@@ -46,7 +46,8 @@ resources :customers, only: [:index,:show,:edit,:update]
     delete 'cart_products/destroy'
     delete 'cart_products/all_destroy'
 
-    resources :orders, only: [:index, :create, :new, :show, :order_confimation, :thanks, :edit, :update, :destroy]
+    resources :orders, only: [:index, :create, :new, :show, :thanks, :edit, :update, :destroy]
+    post 'order_confimation' => 'orders#order_confimation'
     resources :deliveries, only: [:index, :create, :new, :edit, :update, :destroy]
     
 

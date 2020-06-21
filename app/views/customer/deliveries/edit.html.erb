@@ -3,7 +3,7 @@
 
 <%= notice %>
 
-<%= form_with(model: @deliverie, url: customer_delivery_path, html: {method: :post} )do |f| %>
+<%= form_with(model: @delivery, url: customer_delivery_path, html: {method: :patch} )do |f| %>
     <form class="form-horizontal">
         <div class="form-inline">
             <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>

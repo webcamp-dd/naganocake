@@ -1,9 +1,9 @@
 
-<%= form_with(model: @order, local: true, url: customer_orders_create_path) do |f| %>
+<%= form_with(model: @order, local: true, url: customer_order_confimation_path) do |f| %>
 
-<h3>注文情報入力</h3>
+<h4>注文情報入力</h4>
 
-<h3>支払い方法入力</h3>
+<b>支払い方法入力</hb>
     <ul>
         <li>
             <%= f.radio_button :payment, :creditcard %>
@@ -15,7 +15,7 @@
         </li>
     </ul>
 
-<h3>お届け先</h3>
+<b>お届け先</b>
 <ul>
         <li>
            
@@ -23,23 +23,24 @@
         <li>
             <%= f.radio_button :address,1 %>
             <%= f.label :address, "ご自身の住所" %>
+            <p><%= current_customer.postal_code + current_customer.address%></p>
+            <p><%= current_customer.family_name + current_customer.first_name%></p>
         </li>
         <li>
             <%= f.radio_button :address,2 %>
             <%= f.label :address, "登録済住所から選択" %>
-            <% @deliveries_addresses.each do |delivery| %>
-            <%= f.select :address, [[delivery, delivery] %>
-            <% end %>
+            <%= f.collection_select :key, current_customer.deliveries, :id, :total_address %>
+
         </li>
         <li>
             <%= f.radio_button :address,3 %>
-            <%= f.label :payment, "新しいお届け先" %>
-            <%= f.label :postal_code %><%= f.text_field :postal_code %>
-		    <%= f.label :address %><%= f.text_field :address %>
-            <%= f.label :name %><%= f.text_field :name %>
+            <%= f.label :address, "新しいお届け先" %>
+            <%= f.label :postal_code,"郵便番号(ハイフンなし)" %><%= f.text_field :postal_code %>
+		    <%= f.label :address,"住所" %><%= f.text_field :address %>
+            <%= f.label :name,"宛名" %><%= f.text_field :name %>
 	</div>
         </li>
     </ul>
-
+       <%# <%= f.hidden_field :order, @order =  %> %> 
 <%= f.submit "確認画面へ進む" %>
 <% end %>

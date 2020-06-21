@@ -9,17 +9,19 @@ class Customer::OrdersController < ApplicationController
 
   def new
   @order = Order.new   
-  ＠deliveries = current_customer.deliveries
-    @deliveries.each do |delivery|
-      @deliveries_addresses = delivery.postal_code + delivery.address + delivery.name
-    end
+  # ＠deliveries = current_customer.deliveries
+  #   @deliveries.each do |delivery|
+  #     @address = []
+  #     @address = delivery.postal_code + delivery.address + delivery.name
+  #   end
   end
 
   def order_confimation
-    @order = Order.find(params[:id]) #あってるか怪しい
+    byebug
+    @order = Order.new(order_params)
     @orderproducts = Order.order_products
     if params[:address] = 1
-      ＠postal_code　= current_customer.postal_code
+      @order.postal_code = current_customer.postal_code
       @address = current_customer.address
       @name = current_customer.name
       @order_address = @postal_code + @address + @name
@@ -28,14 +30,13 @@ class Customer::OrdersController < ApplicationController
       @order_address = delivery
   
     else params[:address] = 3
-      # ＠postal_code =
+      @order = Order.new
+      # ＠postal_code =　
       # @address = 
       # @name =
-
+      # @order_address =
     end
   end
-
-  
 
   def create  
   end
@@ -43,6 +44,7 @@ class Customer::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @orderproducts = Order.order_products
+    @orderproducts = @order.order_products1
     # @order_products = OrderProduct.where(product_id: params:[:id]) #書き方がわからない→質問２
   end
 

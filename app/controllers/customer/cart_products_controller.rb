@@ -41,8 +41,9 @@ class Customer::CartProductsController < ApplicationController
   end
 
   
+
   def all_destroy
-    @cart_products = current_customer.cart_items.all
+    @cart_products = current_customer.cart_products.all
     @cart_products.destroy
     flash[:notice] = 'カート内商品を全件削除しました'
     redirect_back(fallback_location: root_path)

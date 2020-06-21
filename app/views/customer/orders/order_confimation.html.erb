@@ -1,0 +1,47 @@
+<h3>注文情報確認</h3>
+<table>
+	<thead>
+		<tr>
+			<th>商品名</th>
+			<th>単価(税込)</th>
+			<th>数量</th>
+			<th>小計</th>
+		</tr>
+    </thead>
+    <% @cart_products.each do |cart_product| %>
+        <tbody>
+            <tr>
+                <td><%= cart_product.name %></td>
+                <td><%= cart_product.Product.unit_price %></td>
+                <td><%= cart_product.quantity %></td>
+                <td><%= cart_product.Product.unit_price * cart_product.quantity %></td>
+            </tr>
+        </tbody>
+    <% end %>
+</table>
+
+    <table>
+    <tr>
+        <th>送料</th>
+        <td><%= @order.postage.to_s(:delimited) %></td> <%# 修正予定 %>
+    </tr>
+        <tr>
+        <th>商品合計</th>
+        <td><%= @order.total_price.to_s(:delimited) %></td>  <%# 修正予定 %>
+       
+    </tr>  <tr>
+        <th>請求金額</th>
+        <td><%= (@order.total_price + @order.postage).to_s(:delimited) %></td>
+    </tr>
+    </table>
+
+    <h4>支払い方法</h4><%= @order_address %>
+    <h4>お届け先</h4><%= @order_address %>
+    <%= @order_address %>
+
+
+    <%= hidden_field_tag :address, @address %>
+    <%= hidden_field_tag :order, @order %>
+    <button type="button" class="btn btn-primary"><%= link_to “購入を確定する”, customer_orders_path %>
+
+</button>
