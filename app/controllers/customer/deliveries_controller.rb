@@ -1,34 +1,37 @@
 class Customer::DeliveriesController < ApplicationController
   #before_action :authenticate_customer!
 
+
+  
   def index
     @customer = current_customer
     @deliveries = @customer.deliveries
-    @deliverie = Deliverie.new
+    # @deliveries = Deliverie.where(customer_id: @customer.id)
+    @delivery = Delivery.new
   end
 
   def create
-    @deliverie = Deliverie.new(deliverie_params) 
-    if @deliverie.save 
-  		redirect_to customer_deliveries_index_path, notice: "配送先を保存しました"
-  	else
-  		@deliveries = Deliverie.all
-  		redirect_to :index
+    @delivery = Delivery.new(delivery_params) 
+    if @delivery.save
+  		redirect_to customer_deliveries_path, notice: "配送先を保存しました"
+  	# else
+  	# 	@deliveries = Delivery.all
+  	# 	redirect_to customer_deliveries_path
   	end
   end
 
   def edit
-    @deliverie = Deliverie.find(params[:id])
+    @delivery = Delivery.find(params[:id])
   end
   
 
   def show
-    @deliveries = Deliverie.find(params[:id])
+    @delivery = Delivery.find(params[:id])
   end
 
   def update
-    @deliverie = Deliverie.find(params[:id])
-  	if @deliverie.update(deliverie_params)
+    @delivery = Delivery.find(params[:id])
+  	if @delivery.update(delivery_params)
   		redirect_to customer_deliveries_path, notice: "配送先情報を更新しました"
   	else
   		redirect_to :edit
@@ -36,8 +39,8 @@ class Customer::DeliveriesController < ApplicationController
   end
 
   def destroy
-    @deliverie = Deliverie.find(params[:id])
-    @deliverie.destroy
+    @delivery = Delivery.find(params[:id])
+    @delivery.destroy
   	redirect_to customer_deliveries_path, notice: "配送先を削除しました"
   end
 end
@@ -45,6 +48,6 @@ end
 
 private
 
-def deliverie_params
-  params.permit(:postal_code, :address ,:name, :id)
+def delivery_params
+  params.require(:delivery).permit(:postal_code, :address ,:name)
 end
