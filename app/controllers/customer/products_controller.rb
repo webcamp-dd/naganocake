@@ -2,7 +2,6 @@ class Customer::ProductsController < ApplicationController
   def index
     @products = Product.page(params[:page]).reverse_order
     @product = Product.new
-    
   end
 
 # @random = Product.order("RAND()").limit(4)
@@ -11,6 +10,7 @@ class Customer::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @cart_product = CartProduct.new
   end
 
   def create

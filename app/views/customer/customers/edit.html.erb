@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <h3>登録情報編集</h3>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-7">
+            <table>
+                <%= form_for(@customer) do |f| %>
+                    <tr>
+                        <th>
+                            <p>名前</p>
+                        </th>
+                        <td>
+                            <p>(姓) <%= f.text_field :family_name %> (名)<%= f.text_field :first_name %></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <p>フリガナ </p>
+                        </th>
+                        <td>
+                            <p>(セイ) <%= f.text_field :kana_family_name %> (メイ) <%= f.text_field :kana_first_name %> </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <p>メールアドレス</p>
+                        </th>
+                        <td>
+                            <p><%= f.text_field :email %></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <p>郵便番号(ハイフンなし)</p>
+                        </th>
+                        <td>
+                            <%= f.text_field :postal_code %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <p>住所</p>
+                        </th>
+                        <td>
+                            <%= f.text_field :address %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <p>電話番号(ハイフンなし)</p>
+                        </th>
+                        <td>
+                            <%= f.text_field :phone_number %>
+                        </td>
+                    </tr>
+            </table>
+        </div>
+    </div>
+</div>
