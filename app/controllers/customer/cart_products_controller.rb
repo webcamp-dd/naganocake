@@ -22,7 +22,7 @@ class Customer::CartProductsController < ApplicationController
   # カート詳細画面から、「更新」を押した時のアクション
   def update
     @cart_product = CartProduct.find(params[:id])
-    if  @cart_product.update(quantity: params[:quantity].to_i)
+    if  @cart_product.update(quantity: params[:cart_product][:quantity].to_i)
       flash[:notice] = 'カート情報を更新しました'
       redirect_to customer_cart_products_path
     else

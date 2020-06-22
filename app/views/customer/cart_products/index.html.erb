@@ -19,7 +19,7 @@
                 <td><%= cart_product.product.name %></td>
                 <td><%= cart_product.product.unit_price %></td>
                 <td>
-                    <%= form_with url: customer_cart_product_path(cart_product), method: :patch do |f| %>
+                    <%= form_with model: cart_product, url: customer_cart_product_path(cart_product), method: :patch do |f| %>
                         <%= f.number_field :quantity, selected: cart_product.quantity.to_i %>
                         <%= f.submit "変更" %>
                     <% end %>
