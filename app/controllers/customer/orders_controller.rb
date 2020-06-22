@@ -4,7 +4,7 @@ class Customer::OrdersController < ApplicationController
   def index
     @customer = current_customer
     @orders = Order.where(customer_id: @customer.id)
-    @orderproducts = Order.order_products
+    # @orderproducts = Order.order_products
   end
 
   def order_confimation 
@@ -31,8 +31,21 @@ class Customer::OrdersController < ApplicationController
   end
 
   def create 
-    byebug
+   
     @cart_products = current_customer.cart_products
+   
+    @confirm_order = Order.new(order_params)
+    @confirm_order.postage = 800
+    @confirm_order.total_price = params[:order][:key_product_sum]
+    @confirm_order.payment =  params[:order][:key_payment]
+    @confirm_order.postal_code = params[:order][:key_postal_code]
+    @confirm_order.address = params[:order][:key_address]
+    @confirm_order.name = params[:order][:key_name]
+    @confirm_order.id =  params[:order][:key_order_id]
+    @confirm_order.customer_id = current_customer.id
+    byebug
+    @confirm_order.save
+    
     sum_price = 0
     @cart_products.each do |cart_product|
       @confirm_product = OrderProduct.new
@@ -40,17 +53,10 @@ class Customer::OrdersController < ApplicationController
       @confirm_product.purchase_unit_price = cart_product.product.unit_price
       sumone = @confirm_product.quantity.to_i * @confirm_product.purchase_unit_price.to_i
       sum_price += sumone
+      @confirm_product.product_id = cart_product.product_id
+      @confirm_product.order_id  = @confirm_order.id
       @confirm_product.save
     end
-    @confirm_order = Order.new(order_params)
-    @confirm_order.postage = 800
-    @confirm_order.total_price = sum_price
-    @confirm_order.payment =  params[:key_payment]
-    @confirm_order.postal_code = params[:key_postal_code]
-    @confirm_order.address = params[:key_address]
-    @confirm_order.name = params[:key_name]
-    @confirm_order.id =  params[:key_order_id]
-    @confirm_order.save
   	redirect_to customer_order_thanks_path
   end
 
