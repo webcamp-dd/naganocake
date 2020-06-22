@@ -9,3 +9,5 @@
 Admin.create!(email: "abcdefg@gmail.com",
 	password: "kanrisya",
 	password_confirmation: "kanrisya")
+
+Order.create(postage: 800)
