@@ -1,1 +1,10 @@
-<%= link_to product_category.name, customer_products_index_path %>
+<h3>ジャンル検索</h3>
+<% category.each do |category| %>
+    <%= link_to customer_path(category.id) do %>
+        <ul>
+            <li>
+                <%= category.name %>
+            </li>
+        </ul>
+    <% end %>
+<% end %>

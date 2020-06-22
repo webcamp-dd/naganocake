@@ -1,6 +1,6 @@
 class Customer::HomesController < ApplicationController
   def top
-    # @random = Product.order("RAND()").limit(5)
+    @random = Product.order("RANDOM()").limit(5)
   end
 end
 

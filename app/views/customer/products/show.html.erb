@@ -8,7 +8,9 @@
                     <div class="col-xs-8">
                            <%= attachment_image_tag @product, :product_image, :fill, 300, 300, format: 'jpeg' %>
                            <h2><%= @product.name  %></h2>
+                           <%= @product.description %>
                            <p><%= @product.unit_price %>円</p>
+
                         <%= form_with model: @cart_product, url: customer_cart_products_create_path(product_id: @product), local:true do |f| %>
                             <%= f.select :quantity, [[1, 1],[2, 2],[3, 3]] %>
                             <%= f.submit %>
