@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root 'customer/homes#top'
 
-
+  
 
   namespace :admin do
     root 'homes#top'
@@ -60,7 +60,7 @@ resources :customers, only: [:index,:show,:edit,:update]
     resources :customers, only: [:edit, :show, :update, :destroy]
     # patch 'customers/update'
     # get 'customers/edit'
-    get 'customers/delete_confimation/:id' =>'customers#delete_confimation'
+    get 'customers/delete_confimation/:id' =>'customers#delete_confimation', as: 'helf'
 
 
   end
