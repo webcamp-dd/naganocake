@@ -16,10 +16,10 @@
             <tr>
                 <td><%= order.created_at %></td>
                 <td><%= order.postal_code + order.address + order.name %></td>
-                <td><% @orderproducts.each do |orderproduct| %>
-                        <%= order.orderproduct.Product.name %>
+                <td><% order.order_products.each do |orderproduct| %>
+                        <%= orderproduct.product.name %>
                     <% end %>
-                </td><%= order.total_price.to_s %>
+                </td><%= order.total_price.to_i + 800 %>
                 <td>
                 </td>
                 <td><%= order.status%>
@@ -29,6 +29,7 @@
                 </td>
             </tr>
         </tbody>
+        <% end %>
 </table>
 
 
