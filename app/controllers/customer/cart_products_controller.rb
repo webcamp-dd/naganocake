@@ -10,12 +10,18 @@ class Customer::CartProductsController < ApplicationController
 
  # 商品一覧画面から、「商品購入」を押した時のアクション
   def create
+    @cart_product = current_customer.cart_products.find_by(product_id: params[:product_id])
+    if @cart_product.blank? 
     @cart_product = CartProduct.new(product_id: params[:product_id], quantity: params[:cart_product][:quantity])
+    else 
+      @cart_product.quantity = @cart_product.quantity + params[:cart_product][:quantity].to_i
+    end
     @cart_product.customer_id = current_customer.id
 # ストロングパラメータを設定する必要あり　そもそもViewから持ってくるものはSaveできない。
     @cart_product.save
     flash[:notice] = 'カートに商品を追加しました'
     redirect_to customer_cart_products_path
+
   end
 
 
@@ -55,6 +61,6 @@ class Customer::CartProductsController < ApplicationController
   private
 
   def setup_cart_product!
-    @cart_product = current_customer.cart_items.find_by(product_id: params[:product_id])
+    @cart_product = current_customer.cart_products.find_by(product_id: params[:product_id])
   end
 end

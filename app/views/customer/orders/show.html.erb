@@ -9,17 +9,17 @@
     </tr>
         <tr>
         <th>配送先</th>
-        <td>><%= @order.postal_code %><br>
+        <td><%= @order.postal_code %><br>
             <%= @order.address %><br>
             <%= @order.name %>
         </td>
     </tr>  <tr>
         <th>支払い方法</th>
-        <td>><%= @order.payment %></td>
+        <td><%= @order.payment %></td>
     </tr>
     <tr>
         <th>ステータス</th>
-        <td>><%= @order.status %></td>
+        <td><%= @order.status %></td>
     </tr>
     </table>
 </div>
@@ -55,9 +55,11 @@
     <% @order_products.each do |order_product| %>
         <tbody>
             <tr>
-                <td><%= order_product.name %></td>
+                <td><%= order_product.product.name %></td>
+                <th><%= order_product.purchase_unit_price.to_s(:delimited) %></th>
                 <td><%= order_product.quantity %></td>
-                <td><%= order_product.quantity * order_product.purchase_unit_price %></td>
+                <td><%  unitsum = order_product.quantity * order_product.purchase_unit_price %>
+                    <%= unitsum.to_s(:delimited)%></td>
             </tr>
         </tbody>
     <% end %>

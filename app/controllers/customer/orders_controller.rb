@@ -1,11 +1,7 @@
 class Customer::OrdersController < ApplicationController
   before_action :authenticate_customer!
 
-  def index
-    @customer = current_customer
-    @orders = Order.where(customer_id: @customer.id)
-    # @orderproducts = Order.order_products
-  end
+
 
   def order_confimation 
     
@@ -43,7 +39,7 @@ class Customer::OrdersController < ApplicationController
     @confirm_order.name = params[:order][:key_name]
     @confirm_order.id =  params[:order][:key_order_id]
     @confirm_order.customer_id = current_customer.id
-    byebug
+  
     @confirm_order.save
     
     sum_price = 0
@@ -57,13 +53,21 @@ class Customer::OrdersController < ApplicationController
       @confirm_product.order_id  = @confirm_order.id
       @confirm_product.save
     end
+    @cart_products.each do |cart_product|
+    cart_product.destroy
+    end
   	redirect_to customer_order_thanks_path
+  end
+
+  def index
+    @customer = current_customer
+    @orders = Order.where(customer_id: @customer.id)
+    # @orderproducts = Order.order_products
   end
 
   def show
     @order = Order.find(params[:id])
-    @orderproducts = Order.order_products
-    @orderproducts = @order.order_products
+    @order_products = @order.order_products
     # @order_products = OrderProduct.where(product_id: params:[:id]) #書き方がわからない→質問２
   end
 
@@ -73,7 +77,7 @@ class Customer::OrdersController < ApplicationController
 
   private
   def order_params
-   params.permit(:customer_id, 
+  params.permit(:customer_id, 
                                   :postage, 
                                   :total_price, 
                                   :payment, 

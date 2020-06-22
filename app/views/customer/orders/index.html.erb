@@ -14,15 +14,18 @@
     <% @orders.each do |order| %>
         <tbody>
             <tr>
-                <td><%= order.created_at %></td>
-                <td><%= order.postal_code + order.address + order.name %></td>
+                <td><%= order.created_at %>
+                </td>
+                <td><%= order.postal_code + order.address + order.name %>
+                </td>
                 <td><% order.order_products.each do |orderproduct| %>
                         <%= orderproduct.product.name %>
                     <% end %>
-                </td><%= order.total_price.to_i + 800 %>
-                <td>
                 </td>
-                <td><%= order.status%>
+                <td>
+                    <%= order.total_price.to_s(:delimited) %>
+                </td>
+                <td><%= order.status %>
                 </td>
                 <td>
                     <%= link_to "表示する",customer_order_path(order), class: "btn-sm btn-primary" %>
