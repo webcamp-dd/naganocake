@@ -8,22 +8,22 @@ class Customer::OrdersController < ApplicationController
   end
 
   def order_confimation 
-    byebug
+    
     @order = Order.new(order_params)
+    @order.postage = 800
     @order.customer_id = current_customer.id
     @order.payment = params[:payment]
     @cart_products = current_customer.cart_products
-    if params[:address] = 1
+    if params[:delivery_address] == "a"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.family_name + current_customer.first_name
   
-    elsif params[:address] = 2
-      @order.postal_code = Delivery.find(params[:order][:key])
-      @order.address = Delivery.find(params[:order][:key])
-      @order.name = Delivery.find(params[:order][:key])
-
-    else params[:address] = 3
+    elsif params[:delivery_address] == "b"
+      @order.postal_code = Delivery.find(params[:key]).postal_code
+      @order.address = Delivery.find(params[:key]).address
+      @order.name = Delivery.find(params[:key]).name
+    else
       @order.postal_code = params[:postal_code]
       @order.address = params[:address]
       @order.name = params[:name]
@@ -31,22 +31,25 @@ class Customer::OrdersController < ApplicationController
   end
 
   def create 
+    byebug
     @cart_products = current_customer.cart_products
     sum_price = 0
     @cart_products.each do |cart_product|
-      Order_product.new
-      OrderProduct.quantity = cart_product.quantity.to_i
-      OrderProduct.purchase_unit_price = cart_product.product.unit_price
-      sumone = OrderProduct.quantity.to_i * OrderProduct.purchase_unit_price.to_i
+      @confirm_product = OrderProduct.new
+      @confirm_product.quantity = cart_product.quantity.to_i
+      @confirm_product.purchase_unit_price = cart_product.product.unit_price
+      sumone = @confirm_product.quantity.to_i * @confirm_product.purchase_unit_price.to_i
       sum_price += sumone
+      @confirm_product.save
     end
     @confirm_order = Order.new(order_params)
-    Order.postage = 800
-    Oeder.total_price = sum_price
-    Order.payment =  params[:payment]
-    Order.postal_code = @order.postal_code
-    Order.address = @order.address
-    Order.name = @order.name
+    @confirm_order.postage = 800
+    @confirm_order.total_price = sum_price
+    @confirm_order.payment =  params[:key_payment]
+    @confirm_order.postal_code = params[:key_postal_code]
+    @confirm_order.address = params[:key_address]
+    @confirm_order.name = params[:key_name]
+    @confirm_order.id =  params[:key_order_id]
     @confirm_order.save
   	redirect_to customer_order_thanks_path
   end
