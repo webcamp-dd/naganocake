@@ -3,29 +3,16 @@
 <div class="container">
     <div class="row section1">
         <div class="col-lg-2">
-                <% @category.each do |category| %>
-                    <%= link_to customer_path(category.id) do %>
-                        <div><%= category.name %></div>
-                    <% end %>
-                <% end %>
+            <%= render 'customer/products/category', category: @category %>
         </div>
             <div class="col-lg-8 message">
                <% @products.each do |product| %>
                    <%= attachment_image_tag product, :product_image, :fill, 100, 100, format: 'jpeg' %>
                    <%= link_to product.name, customer_product_path(product.id) %>
+                   <%= product.description %>
                    <a><%= product.unit_price %>円</a>
                <% end %>
                <%= paginate @products %>
             </div>
     </div>
 </div>
-
-
-<%= form_for(@product, url: customer_products_path) do |f| %>
-
-    <%= f.attachment_field :product_image %>
-    <%= f.text_field :name %>
-    <%= f.text_field :unit_price %>
-    <%= f.submit %>
-
-<% end %>

@@ -1,5 +1,10 @@
 
 
 <% @categories.products.each do |category| %>
-    <%= category.name %>
+    <%= link_to customer_product_path(product.id) do %>
+        <%= attachment_image_tag category, :product_image, :fill, 300, 300, format: 'jpeg' %>
+    <% end %>
+    <%= link_to categories.name, customer_product_path(product.id) %>
+    <%= category.description %>
+    <p><%= category.unit_price %>円</p>
 <% end %>
