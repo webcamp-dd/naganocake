@@ -40,14 +40,12 @@ resources :customers, only: [:index,:show,:edit,:update]
   end
 
   namespace :customer do
-    get 'cart_products/index'
-    post 'cart_products/create'
-    patch 'cart_products/update'
-    delete 'cart_products/destroy'
-    delete 'cart_products/all_destroy'
+    resources :cart_products, only: [:index, :create, :update, :destroy]
+    delete 'cart_products/all_destroy' => 'cart_products#all_destroy'
 
-    resources :orders, only: [:index, :create, :new, :show, :thanks, :edit, :update, :destroy]
+    resources :orders, only: [:index, :create, :new, :show, :edit, :update, :destroy]
     post 'order_confimation' => 'orders#order_confimation'
+    get 'order/thanks' => 'orders#thanks'
     resources :deliveries, only: [:index, :create, :new, :edit, :update, :destroy]
     
     get 'products/category/:id' => 'products#category'
@@ -65,10 +63,6 @@ resources :customers, only: [:index,:show,:edit,:update]
     get 'customers/delete_confimation/:id' =>'customers#delete_confimation', as: 'helf'
 
 
-    
-    post '/add_item' => 'cartproducts#add_item'
-    post '/update_item' => 'cartproducts#update_item'
-    delete '/delete_item' => 'cartproducts#delete_item'
   end
 
   

@@ -12,23 +12,28 @@
 			<th></th>
 		</tr>
     </thead>
+    <% sum = 0 %>
     <% @cart_products.each do |cart_product| %>
         <tbody>
             <tr>
-                <td><%= cart_product.name %></td>
-                <td><%= cart_product.quantity %></td>
+                <td><%= cart_product.product.name %></td>
+                <td><%= cart_product.product.unit_price %></td>
                 <td>
-                    <%= form_for(@cart_product, url: customer_cart_products_update_path) do |f| %>
-                        <%= f.number_field :quantity %>
+                    <%= form_with url: customer_cart_product_path(cart_product), method: :patch do |f| %>
+                        <%= f.number_field :quantity, selected: cart_product.quantity.to_i %>
                         <%= f.submit "変更" %>
                     <% end %>
                 </td>
-                <td><%= cart_product.quantity * cart_product.unit_price %></td>
                 <td>
-                    <%= link_to "削除する", customer_cart_products_destroy_path(@cart_product), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+                <% cart_product.product.unit_price %>
+                <% sumone = cart_product.quantity.to_i * cart_product.product.unit_price.to_i %>
+                <%= sumone %></td>
+                <td>
+                    <%= link_to "削除する", customer_cart_product_path(cart_product), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
                 </td>
             </tr>
         </tbody>
+        <% sum += sumone %>
     <% end %>
 </table>
 
@@ -39,7 +44,7 @@
             <th>合計金額</th>
         </tr>
         <tr>
-        <td>合計金額を表示</td>
+        <td><%= sum %></td>
     </tr>
 </table>
 

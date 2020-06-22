@@ -1,20 +1,21 @@
 class Customer::CartProductsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_customer! 
 
 
   def index
     @cart_products = current_customer.cart_products
+    @numbers = CartProduct.all
+
   end
 
  # 商品一覧画面から、「商品購入」を押した時のアクション
   def create
-    if @cart_product.blank?
-    @cart_product = CartProduct.new(product_id: params[:product_id])
-    end
-    @cart_product.quantity += params[:quantity].to_i
+    @cart_product = CartProduct.new(product_id: params[:product_id], quantity: params[:cart_product][:quantity])
+    @cart_product.customer_id = current_customer.id
+# ストロングパラメータを設定する必要あり　そもそもViewから持ってくるものはSaveできない。
     @cart_product.save
     flash[:notice] = 'カートに商品を追加しました'
-    redirect_back(fallback_location: root_path)
+    redirect_to customer_cart_products_path
   end
 
 
@@ -23,10 +24,10 @@ class Customer::CartProductsController < ApplicationController
     @cart_product = CartProduct.find(params[:id])
     if  @cart_product.update(quantity: params[:quantity].to_i)
       flash[:notice] = 'カート情報を更新しました'
-      redirect_back(fallback_location: root_path)
+      redirect_to customer_cart_products_path
     else
       flash[:notice] = 'カート情報が更新できませんでした'
-      redirect_back(fallback_location: root_path)
+      redirect_to customer_cart_products_path
     end
 
   end
@@ -34,9 +35,10 @@ class Customer::CartProductsController < ApplicationController
 
  # カート詳細画面から、「削除」を押した時のアクション
   def destroy
+    @cart_product = CartProduct.find(params[:id])
     @cart_product.destroy
     flash[:notice] = '商品を削除しました'
-    redirect_back(fallback_location: root_path)
+    redirect_to customer_cart_products_path
     
   end
 
