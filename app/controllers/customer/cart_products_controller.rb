@@ -17,7 +17,7 @@ class Customer::CartProductsController < ApplicationController
       @cart_product.quantity = @cart_product.quantity + params[:cart_product][:quantity].to_i
     end
     @cart_product.customer_id = current_customer.id
-# ストロングパラメータを設定する必要あり　そもそもViewから持ってくるものはSaveできない。
+# ストロングパラメータを設定する必要ありそもそもViewから持ってくるものはSaveできない。
     @cart_product.save
     flash[:notice] = 'カートに商品を追加しました'
     redirect_to customer_cart_products_path
