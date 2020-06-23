@@ -23,6 +23,14 @@ class Customer::OrdersController < ApplicationController
       @order.postal_code = params[:postal_code]
       @order.address = params[:address]
       @order.name = params[:name]
+
+      #宛先を新規追加
+      add_delivery = Delivery.new
+      add_delivery.customer_id = current_customer.id
+      add_delivery.postal_code = params[:postal_code]
+      add_delivery.address = params[:address]
+      add_delivery.name = params[:name]
+      add_delivery.save
     end
   end
 
@@ -62,13 +70,45 @@ class Customer::OrdersController < ApplicationController
   def index
     @customer = current_customer
     @orders = Order.where(customer_id: @customer.id)
-    # @orderproducts = Order.order_products
+
   end
 
   def show
     @order = Order.find(params[:id])
     @order_products = @order.order_products
     # @order_products = OrderProduct.where(product_id: params:[:id]) #書き方がわからない→質問２
+      # 注文ステータス確認用
+      if @order.status == "payment_confirmation"
+        @status = "入金確認"
+      elsif @order.status == "in_production"
+        @status = "製作中"
+      elsif @order.status == "preparing_delivery"
+        @status = "発送準備中"
+      elsif @order.status == "delivered"
+        @status = "発送済み"
+      else
+        @order.status == "payment_waiting"
+        @status = "入金待ち"
+      end
+      #支払い方法
+      if @order.payment == "creditcard"
+        @payment = "クレジットカード"
+      else
+        @payment = "銀行振り込"
+      end
+
+    #       # どこに記載すべき？注文ステータスの自動更新その１。紐づく注文商品の制作が一つでも製作中になったら自動更新。
+    # if @order.order_product.status == "制作待ち"
+    # 　　order.status == "in_production"
+    #   　@status = "製作中"
+    # end
+
+    # # 注文ステータスの自動更新その2。紐づく注文商品の制作ステータスが全て制作完了になったら自動更新
+    # if @order.order_product.status == "制作待ち"
+    #   order.status == "preparing_delivery"
+    #   @status = "発送準備中"    
+    # end
+
   end
 
   def thanks

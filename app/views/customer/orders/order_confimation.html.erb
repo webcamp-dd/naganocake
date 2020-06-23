@@ -14,10 +14,10 @@
             <tr>
                 <td><%= cart_product.product.name %></td>
                 <td><%= cart_product.product.unit_price.to_s(:delimited) %></td>
-                <td><%= cart_product.quantity.to_s(:delimited) %></td>
+                <td><%= cart_product.quantity %></td>
                 <td>
                 <% sumone = cart_product.quantity.to_i * cart_product.product.unit_price.to_i %>
-                <%= sumone.to_s(:delimited) %></td>
+                <%= sumone %></td>
             </tr>
         </tbody>
          <% product_sum += sumone %>
@@ -27,11 +27,11 @@
     <table>
     <tr>
         <th>送料</th>
-        <td><%= @order.postage.to_i %></td>
+        <td><%= @order.postage.to_i %></td> <%# 修正予定 %>
     </tr>
         <tr>
         <th>商品合計</th>
-        <td><%= product_sum.to_s(:delimited) %></td> 
+        <td><%= product_sum %></td>  <%# 修正予定 %>
        
     </tr>  <tr>
         <th>請求金額</th>
