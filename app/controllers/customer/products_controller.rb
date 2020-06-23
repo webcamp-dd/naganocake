@@ -5,13 +5,10 @@ class Customer::ProductsController < ApplicationController
     @category = ProductCategory.all
   end
 
-# @random = Product.order("RAND()").limit(4)
-# @category = ProductCategory.find(params[:id])
-# @category = ProductCategory.new
-
   def show
     @product = Product.find(params[:id])
     @cart_product = CartProduct.new
+    @category = ProductCategory.all
   end
 
 

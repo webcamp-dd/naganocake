@@ -3,7 +3,7 @@
     <div class="row section1">
         <div class="col-xs-1"></div>
         <div class="col-xs-2">
-            <h1>ジャンル検索予定</h1>
+            <%= render 'customer/products/category', category: @category %>
         </div>
                     <div class="col-xs-8">
                            <%= attachment_image_tag @product, :product_image, :fill, 300, 300, format: 'jpeg' %>
