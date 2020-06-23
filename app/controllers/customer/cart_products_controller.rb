@@ -50,9 +50,8 @@ class Customer::CartProductsController < ApplicationController
   
 
   def all_throw_away
-    byebug
     @cart_products = current_customer.cart_products.all
-    @cart_products.destroy
+    @cart_products.destroy_all
     flash[:notice] = 'カート内商品を全件削除しました'
     redirect_back(fallback_location: root_path)
   end
