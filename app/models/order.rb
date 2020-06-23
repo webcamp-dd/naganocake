@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  
     after_initialize :set_default_values
 
     belongs_to :customer
@@ -17,4 +18,5 @@ class Order < ApplicationRecord
         def set_default_values
           self.status      ||= 0
         end        
+
 end

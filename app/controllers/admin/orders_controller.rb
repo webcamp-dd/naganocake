@@ -7,7 +7,6 @@ class Admin::OrdersController < ApplicationController
   def show
   	@order = Order.find(params[:id])
     @order_product = @order.order_products
-
     # どこに記載すべき？注文ステータスの自動更新その１。紐づく注文商品の制作が一つでも製作中になったら自動更新。
     if @order.order_products.status == "製作中"
       　　order.status == "in_production"
@@ -19,7 +18,6 @@ class Admin::OrdersController < ApplicationController
         order.status == "preparing_delivery"
         @status = "発送準備中"    
       end
-
 
   end
 
