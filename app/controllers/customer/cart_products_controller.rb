@@ -17,7 +17,7 @@ class Customer::CartProductsController < ApplicationController
       @cart_product.quantity = @cart_product.quantity + params[:cart_product][:quantity].to_i
     end
     @cart_product.customer_id = current_customer.id
-# ストロングパラメータを設定する必要あり　そもそもViewから持ってくるものはSaveできない。
+# ストロングパラメータを設定する必要ありそもそもViewから持ってくるものはSaveできない。
     @cart_product.save
     flash[:notice] = 'カートに商品を追加しました'
     redirect_to customer_cart_products_path
@@ -45,14 +45,13 @@ class Customer::CartProductsController < ApplicationController
     @cart_product.destroy
     flash[:notice] = '商品を削除しました'
     redirect_to customer_cart_products_path
-    
   end
 
   
 
-  def all_destroy
+  def all_throw_away
     @cart_products = current_customer.cart_products.all
-    @cart_products.destroy
+    @cart_products.destroy_all
     flash[:notice] = 'カート内商品を全件削除しました'
     redirect_back(fallback_location: root_path)
   end
