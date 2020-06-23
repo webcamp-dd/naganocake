@@ -1,6 +1,6 @@
 <h1>ショッピングカート</h1>
 
-<%= link_to "カートを空にする", customer_cart_products_all_destroy_path, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-right btn-sm btn-danger" %>
+<%= link_to "カートを空にする", customer_cart_products_all_throw_away_path, method: :delete, data: {confirm: "カート内商品を全て削除してもよろしいですか？"}, class: "btn-right btn-sm btn-danger" %>
 
 <table class="table table-inverse">
 	<thead>

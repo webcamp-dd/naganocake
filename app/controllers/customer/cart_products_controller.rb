@@ -45,12 +45,12 @@ class Customer::CartProductsController < ApplicationController
     @cart_product.destroy
     flash[:notice] = '商品を削除しました'
     redirect_to customer_cart_products_path
-    
   end
 
   
 
-  def all_destroy
+  def all_throw_away
+    byebug
     @cart_products = current_customer.cart_products.all
     @cart_products.destroy
     flash[:notice] = 'カート内商品を全件削除しました'
