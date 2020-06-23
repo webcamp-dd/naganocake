@@ -41,7 +41,7 @@ resources :customers, only: [:index,:show,:edit,:update]
 
   namespace :customer do
     resources :cart_products, only: [:index, :create, :update, :destroy]
-    delete 'cart_products/all_throw_away' => 'cart_products#all_throw_away'
+    delete 'cart_products/all_throw_away/:id' => 'cart_products#all_throw_away'
     
 
     resources :orders, only: [:index, :create, :new, :show, :edit, :update, :destroy]
