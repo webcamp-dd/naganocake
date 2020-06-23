@@ -12,9 +12,9 @@
 	<tbody>
 		<% @orders.each do |f| %>
 		<tr>
-			<td><%= link_to f.create_at , admin_order_path(f) %></td>
-			<td><%= f.family_name %><%= f.first_name %></td>
-			<td><%= f.count %></td> <!-- 注文個数まだ -->
+			<td><%= link_to f.created_at , admin_order_path(f) %></td>
+			<td><%= f.name %></td>
+			<!-- <td><%= f.count %></td> -->
 			<td><%= f.status %></td>
 		</tr>
 		<% end %>
