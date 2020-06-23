@@ -6,5 +6,5 @@
     <% end %>
     <%= link_to categories.name, customer_product_path(product.id) %>
     <%= category.description %>
-    <p><%= category.unit_price %>円</p>
+    <p><%= product.unit_price.to_s(:delimited) %>円</p>
 <% end %>

@@ -7,10 +7,12 @@
         </div>
             <div class="col-lg-8 message">
                <% @products.each do |product| %>
-                   <%= attachment_image_tag product, :product_image, :fill, 100, 100, format: 'jpeg' %>
-                   <%= link_to product.name, customer_product_path(product.id) %>
-                   <%= product.description %>
-                   <a><%= product.unit_price %>円</a>
+                <%= link_to customer_product_path(product.id) do %>
+                    <%= attachment_image_tag product, :product_image, :fill, 100, 100, format: 'jpeg' %>
+                <% end %>
+                    <%= link_to product.name, customer_product_path(product.id) %>
+                    <%= product.description %>
+                    <p><%= product.unit_price.to_s(:delimited) %>円</p>
                <% end %>
                <%= paginate @products %>
             </div>
