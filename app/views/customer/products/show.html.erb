@@ -6,7 +6,7 @@
             <%= render 'customer/products/category', category: @category %>
         </div>
                     <div class="col-xs-8">
-                           <%= attachment_image_tag @product, :product_image, :fill, 300, 300, format: 'jpeg' %>
+                           <%= attachment_image_tag @product, :product_image, :fill, 300, 300, format: 'jpeg', fallback: "no-image-mini.jpg" %>
                            <h2><%= @product.name  %></h2>
                            <%= @product.description %>
                            <p><%= @product.unit_price.to_s(:delimited) %>円</p>
