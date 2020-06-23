@@ -27,7 +27,7 @@
                 <td>
                 <% cart_product.product.unit_price %>
                 <% sumone = cart_product.quantity.to_i * cart_product.product.unit_price.to_i %>
-                <%= sumone %></td>
+                <%= sumone.to_s(:delimited) %></td>
                 <td>
                     <%= link_to "削除する", customer_cart_product_path(cart_product), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
                 </td>
@@ -44,7 +44,7 @@
             <th>合計金額</th>
         </tr>
         <tr>
-        <td><%= sum %></td>
+        <td><%= sum.to_s(:delimited) %></td>
     </tr>
 </table>
 
