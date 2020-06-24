@@ -23,3 +23,25 @@ table th {/*table内のthに対して*/
     margin-right: 15px;
 }
   /* テーブルここまで */
+
+ /*注文情報入力画面用 */
+
+li{
+  list-style: none;
+
+}
+
+label {
+  margin-right: 10px;
+
+}
+
+}
+.confimation-btn{
+  text-align: center;
+  margin: 20px 0;
+}
+
+
+
+/*注文情報入力画面用ここまで */

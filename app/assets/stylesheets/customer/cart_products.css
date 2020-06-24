@@ -1,1 +1,25 @@
 /* No CSS *//*# sourceMappingURL=cart_products.css.map */
+
+.right_bottom {
+    text-align: right;
+    margin: 20px 0 ;
+}
+.small_table{
+    width:20%;
+    margin-left: 700px;
+    display: inline-block;
+
+}
+.s_table{
+    display: inline-block;
+
+}
+.shop-btn{
+    display: inline-block;
+    float: left;
+}
+
+.next-btn{
+    text-align: center;
+    margin: 20px 0;
+}
