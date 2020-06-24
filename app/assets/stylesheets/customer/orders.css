@@ -24,6 +24,28 @@ table th {/*table内のthに対して*/
 }
   /* テーブルここまで */
 
+ /*注文情報入力画面用 */
+
+li{
+  list-style: none;
+
+}
+
+label {
+  margin-right: 10px;
+
+}
+
+}
+.confimation-btn{
+  text-align: center;
+  margin: 20px 0;
+}
+
+
+
+/*注文情報入力画面用ここまで */
+
   .thanks-c {
     text-align: center;
     margin-top: 100px;
@@ -36,3 +58,4 @@ table th {/*table内のthに対して*/
     background: url(images/cake1.jpg);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; テキストに画像の埋め込み失敗*/
+

@@ -78,23 +78,23 @@ class Customer::OrdersController < ApplicationController
     @order_products = @order.order_products
     # @order_products = OrderProduct.where(product_id: params:[:id]) #書き方がわからない→質問２
       # 注文ステータス確認用
-      if @order.status == "payment_confirmation"
+      if @order.status == "入金確認"
         @status = "入金確認"
-      elsif @order.status == "in_production"
+      elsif @order.status == "製作中"
         @status = "製作中"
-      elsif @order.status == "preparing_delivery"
+      elsif @order.status == "発送準備中"
         @status = "発送準備中"
-      elsif @order.status == "delivered"
+      elsif @order.status == "発送済み"
         @status = "発送済み"
       else
-        @order.status == "payment_waiting"
+        @order.status == "入金待ち"
         @status = "入金待ち"
       end
       #支払い方法
-      if @order.payment == "creditcard"
+      if @order.payment == "クレジットカード"
         @payment = "クレジットカード"
       else
-        @payment = "銀行振り込"
+        @payment = "銀行振込"
       end
 
 
