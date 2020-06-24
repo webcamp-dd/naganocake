@@ -34,7 +34,7 @@
         <tr>
         <th>配送料</th>
         <td><%= @order.postage.to_s(:delimited) %></td>  <%# 修正予定 %>
-       
+
     </tr>  <tr>
         <th>ご請求額</th>
         <td><%= (@order.total_price + @order.postage).to_s(:delimited) %></td>

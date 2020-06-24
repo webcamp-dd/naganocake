@@ -1,4 +1,5 @@
 class Admin::ProductCategoriesController < ApplicationController
+	before_action :authenticate_admin!
 
 	def index
 		@product_category = ProductCategory.new

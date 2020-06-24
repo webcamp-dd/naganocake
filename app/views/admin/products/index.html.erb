@@ -3,7 +3,7 @@
 
 <%# 新規登録ボタン %>
 <%= link_to new_admin_product_path do %>
-<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 <% end %>
 
 <table class="table table-hover">
@@ -21,7 +21,7 @@
 		<tr>
 			<td><%= product.id %></td>
 			<td><%= link_to product.name, admin_product_path(product) %></td>
-			<td><%= converting_to_jpy(product.unit_price) %></td>
+			<td><%= product.unit_price.to_s(:delimited) %></td>
 			<td><%= product.product_category.name %></td>
 			<td><% if product.sales_status == true %>販売中<% else %>売切れ<% end %></td>
 		</tr>

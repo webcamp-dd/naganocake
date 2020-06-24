@@ -7,8 +7,6 @@ class Product < ApplicationRecord
 	has_many :order_products,dependent: :destroy
 	attachment :product_image
 	belongs_to :product_category
-
-
 end
 
 
