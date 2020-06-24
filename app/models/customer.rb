@@ -7,5 +7,4 @@ class Customer < ApplicationRecord
   has_many :orders,dependent: :destroy
   has_many :deliveries, dependent: :destroy
   acts_as_paranoid
-  
 end

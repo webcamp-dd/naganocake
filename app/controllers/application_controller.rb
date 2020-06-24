@@ -1,11 +1,22 @@
 class ApplicationController < ActionController::Base
-    before_action :configure_permitted_parameters, if: :devise_controller?
-      
-      def after_sign_out_path_for(a)
-        if a == :admin
-          new_admin_session_path
-        end
-      end
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def after_sign_out_path_for(a) #ログアウトした時の遷移先
+    if a == :admin
+      new_admin_session_path
+    else
+      root_path
+    end
+  end
+
+  # def after_sign_in_path_for(b) #ログインした時の遷移先
+  #   if b == :admin
+  #     admin_root_path
+  #   else
+  #     root_path
+  #   end
+  # end
+
   protected
 
   def configure_permitted_parameters
