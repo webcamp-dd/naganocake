@@ -1,3 +1,11 @@
 // Place all the styles related to the customer/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.thanks-c {
+    text-align: center;
+    color: rgb(133, 64, 64);//非対応のブラウザでの文字色を設定
+    // background: url(images/satin-nuss.jpg);//使用する背景画像のURL
+    // -webkit-background-clip: text;//テキストでくり抜く
+    // -webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
+}
