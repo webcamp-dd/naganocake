@@ -20,7 +20,7 @@
 		<tr>
 			<td>注文ステータス</td>
 			<td>
-				<%= form_with model: @order , url:admin_order_path(@order) do |f| %>
+				<%= form_with model: @order , url: admin_order_path(@order) do |f| %>
 				<%= f.select :status, [["入金待ち","0"],["入金確認","1"],["製作中","2"],["発送準備中","3"],["発送済み","4"]] %>
 				<%= f.submit "更新",class: "btn btn-primary" %>
 				<% end %>
@@ -48,9 +48,9 @@
 			<td><%= g.quantity %></td>
 			<td><%= ((g.purchase_unit_price * g.quantity * 1.1).round).to_s(:delimited) %></td>
 
-			<%= form_with model: @order_product , url:admin_order_path(g) do |h| %>
+			<%= form_with model: g , url: admin_order_product_path(g) do |h| %>
 			<td>
-				<%= h.select :status, [["着手不可","0"],["製作待ち","1"],["製作中","2"],["製作完了","3"]] %>
+				<%= h.select :status, [["着手不可","着手不可"],["製作待ち","製作待ち"],["製作中","製作中"],["製作完了","製作完了"]] %>
 			</td>
 			<td><%= h.submit "更新",class: "btn btn-primary" %></td>
 			<% end %>
