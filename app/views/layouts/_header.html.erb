@@ -13,44 +13,44 @@
               <ul class="nav navbar-nav navbar-right">
                 <% if customer_signed_in? %>
                   <li  aria-hidden="true">
-                    <%= link_to "マイページ", customer_customer_path(current_customer.id) %>
+                    <%= link_to "マイページ", customer_customer_path(current_customer.id), class: "glyphicon glyphicon-cutlery header-color" %>
                   </li>
                   <li  aria-hidden="true">
-                    <%= link_to " 商品一覧", customer_products_index_path, class: "glyphicon glyphicon-cutlery" %>
+                    <%= link_to " 商品一覧", customer_products_index_path, class: "glyphicon glyphicon-cutlery header-color" %>
                   </li>
                   <li  aria-hidden="true">
-                    <%= link_to " カート", customer_cart_products_path, class: "glyphicon glyphicon-shopping-cart" %>
+                    <%= link_to " カート", customer_cart_products_path, class: "glyphicon glyphicon-shopping-cart header-color" %>
                   </li>
                   <li  aria-hidden="true">
-                    <%= link_to " ログアウト", destroy_customer_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
+                    <%= link_to " ログアウト", destroy_customer_session_path, method: :delete, class: "glyphicon glyphicon-log-out header-color" %>
                   </li>
                 <% elsif admin_signed_in? %>
                   <li  aria-hidden="true">
-                    <%= link_to "商品一覧", admin_products_path %>
+                    <%= link_to "商品一覧", admin_products_path, class: "glyphicon glyphicon-cutlery header-color"  %>
                   </li>
                   <li  aria-hidden="true">
-                    <%= link_to "会員一覧",  admin_customers_path %>
+                    <%= link_to "会員一覧",  admin_customers_path, class: "header-color" %>
                   </li>
                   <li  aria-hidden="true">
-                    <%= link_to " 注文履歴一覧",  admin_orders_path %>
+                    <%= link_to " 注文履歴一覧",  admin_orders_path, class: "header-color" %>
                   </li>
                   <li  aria-hidden="true">
-                    <%= link_to "ジャンル一覧", admin_product_categories_path %>
+                    <%= link_to "ジャンル一覧", admin_product_categories_path, class: "header-color" %>
                   </li>
                   <li  aria-hidden="true">
-                    <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
+                    <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out header-color" %>
                   </li>
                   
                 <% else %>
                   <li  aria-hidden="true">
-                    <%= link_to " 商品一覧", customer_products_index_path, class: "glyphicon glyphicon-cutlery" %>
+                    <%= link_to " 商品一覧", customer_products_index_path, class: "glyphicon glyphicon-cutlery header-color" %>
                   </li>
                   
                   <li aria-hidden="true">
-                  <%= link_to " sign up", new_customer_registration_path, class: "glyphicon glyphicon-edit" %>
+                  <%= link_to " sign up", new_customer_registration_path, class: "glyphicon glyphicon-edit header-color" %>
                   </li>
                   <li aria-hidden="true">
-                  <%= link_to " login", new_customer_session_path, class: "glyphicon glyphicon-log-in" %>
+                  <%= link_to " login", new_customer_session_path, class: "glyphicon glyphicon-log-in header-color" %>
                   </li>
                 <% end %>
               </ul>
