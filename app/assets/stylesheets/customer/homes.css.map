@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAGA,AAAA,MAAM,CAAC;EACH,MAAM,EAAE,KAAK;CAChB;;AAED,AAAA,SAAS,CAAC;EACN,MAAM,EAAE,KAAK;CAChB;;AAED,AAAA,QAAQ,CAAC;EACL,gBAAgB,EAAE,oBAAiB;CACtC;;AAED,AAAA,SAAS,CAAC;EACN,MAAM,EAAE,KAAK;CAChB",
+    "mappings": "",
     "sources": [
         "homes.scss"
     ],

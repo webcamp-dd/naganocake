@@ -45,3 +45,17 @@ label {
 
 
 /*注文情報入力画面用ここまで */
+
+  .thanks-c {
+    text-align: center;
+    margin-top: 100px;
+    color: #FF7C00;
+    background: -webkit-linear-gradient(top, #FFB76B 0%, #FFA73D 50%, #FF7C00 51%, #FF7F04 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+  /* color: rgb(133, 64, 64);
+    background: url(images/cake1.jpg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; テキストに画像の埋め込み失敗*/
+

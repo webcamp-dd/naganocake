@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
       def after_sign_out_path_for(a)
         if a == :admin
           new_admin_session_path
+        else
+          root_path
         end
       end
   protected
