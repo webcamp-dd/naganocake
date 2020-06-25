@@ -1,35 +1,63 @@
-<h1>商品詳細</h1>
+<div class="container">
 
-<div class="row">
-	<div class="col-sm-4">
-		<%= attachment_image_tag @product, :product_image, size: "100x100",format:'jpeg', fallback: "no-image-mini.jpg" %>
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-10">
+			<h1>商品詳細</h1>
+		</div>
+		<div class="col-lxs-1"></div>
 	</div>
 
-	<div class="col-sm-4">
-		<p>商品名</p>
-		<%= @product.name %>
-		<br>
-		<p>商品説明</p>
-		<%= @product.description %>
-		<br>
-		<p>ジャンル</p>
-		<%= @product.product_category.name %>
-		<br>
-		<p>税込価格(税抜価格)</p>
-		<%
-=begin%>
- <%= converting_to_jpy((@product.unit_price * 1.1).round) %>
-		(<%= converting_to_jpy(@product.unit_price) %>)円 
-<%
-=end%>
-		<br>
-		<p>販売ステータス </p>
-		<% if @product.sales_status == true %>販売中
-		<% else %>
-		売切れ
-		<% end %>
+
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-3">
+			<%= attachment_image_tag @product, :product_image, size: "100x100",format:'jpeg', fallback: "no-image-mini.jpg" %>
+		</div>
+
+		<div class="col-xs-4">
+			<table class="table">
+				<thead>
+					<tr></tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>商品名</td>
+						<td><%= @product.name %></td>
+					</tr>
+					<tr>
+						<td>商品説明</td>
+						<td><%= @product.description %></td>
+					</tr>
+					<tr>
+						<td>ジャンル</td>
+						<td><%= @product.product_category.name %></td>
+					</tr>
+					<tr>
+						<td>税込価格(税抜価格)</td>
+						<td>
+							<%= ((@product.unit_price * 1.1).round).to_s(:delimited) %>  (<%= @product.unit_price.to_s(:delimited) %>)  円
+						</td>
+					</tr>
+					<tr>
+						<td>販売ステータス</td>
+						<td><% if @product.sales_status == true %>販売中
+							<% else %>
+							売切れ
+							<% end %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-4"></div>
 	</div>
 
-	<div class="col-sm-4">
-		<%= link_to "編集する",edit_admin_product_path(@product),class: "btn btn-primary" %>
+	<div class="row">
+		<div class="col-xs-8"></div>
+		<div class="col-xs-3">
+			<%= link_to "編集する",edit_admin_product_path(@product),class: "btn btn-primary" %>
+		</div>
+		<div class="col-xs-1"></div>
 	</div>
+</div>

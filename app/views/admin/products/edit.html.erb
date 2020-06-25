@@ -1,30 +1,58 @@
-<h1>商品編集</h1>
+<div class="container">
 
-<div class="row">
-	<%= form_with model: @product, url:admin_product_path(@product) do |f| %>
-	<div class="col-sm-4">
-		<%= f.attachment_field :product_image %>
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-10">
+			<h1>商品編集</h1>
+		</div>
+		<div class="col-xs-1"></div>
 	</div>
 
-	<div class="col-sm-4">
-		<%= f.label :商品名 %>
-		<%= f.text_field :name %>
-		<br>
-		<%= f.label :商品説明 %>
-		<%= f.text_area :description %>
-		<br>
-		<%= f.label :ジャンル %>
-		<%= f.collection_select :product_category_id, ProductCategory.all, :id,:name,  include_blank: "--選択してください--" %>
-		<br>
-		<%= f.label :税抜価格 %>
-		<%= f.text_field :unit_price %>
-		<br>
-		<%= f.label :販売ステータス %>
-		<%= f.select :sales_status, [["販売中","1"],["売切れ","0"]] %>
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-3">
+			<%= form_with model: @product, url:admin_product_path(@product) do |f| %>
+			<%= f.attachment_field :product_image %>
+		</div>
+
+		<div class="col-xs-4">
+			<table class="table">
+				<thead>
+					<tr></tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= f.label :商品名 %></td>
+						<td><%= f.text_field :name %></td>
+					</tr>
+					<tr>
+						<td><%= f.label :商品説明 %></td>
+						<td><%= f.text_area :description %></td>
+					</tr>
+					<tr>
+						<td><%= f.label :ジャンル %></td>
+						<td><%= f.collection_select :product_category_id, ProductCategory.all, :id,:name,  include_blank: "--選択してください--" %></td>
+					</tr>
+					<tr>
+						<td><%= f.label :税抜価格 %></td>
+						<td><%= f.text_field :unit_price %></td>
+					</tr>
+					<tr>
+						<td><%= f.label :販売ステータス %></td>
+						<td><%= f.select :sales_status, [["販売中","1"],["売切れ","0"]] %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-4"></div>
 	</div>
 
-	<div class="col-sm-4">
-		<%= f.submit "変更を保存",class: "btn btn-primary" %>
+	<div class="row">
+		<div class="col-xs-8"></div>
+		<div class="col-xs-3">
+			<%= f.submit "変更を保存",class: "btn btn-primary" %>
+		</div>
+		<% end %>
+		<div class="col-xs-1"></div>
 	</div>
-	<% end %>
 </div>

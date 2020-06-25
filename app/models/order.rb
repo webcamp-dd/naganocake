@@ -5,7 +5,7 @@ class Order < ApplicationRecord
     belongs_to :customer
     has_many :cart_products, class_name: 'CartProduct', dependent: :destroy
     has_many :order_products, class_name: 'OrderProduct', dependent: :destroy
-    enum payment: { creditcard: 0, bank: 1}
+    enum payment: { クレジットカード: 0, 銀行振込: 1}
     enum status: {
         入金待ち:  0, #入金待ち
         入金確認:  1, #入金確認
