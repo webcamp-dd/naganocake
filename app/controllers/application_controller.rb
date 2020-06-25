@@ -10,13 +10,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def after_sign_in_path_for(b) #ログインした時の遷移先
-  #   if b == :admin
-  #     admin_root_path
-  #   else
-  #     root_path
-  #   end
-  # end
+  def after_sign_in_path_for(resource) #ログインした時の遷移先
+    case resource
+    when Admin
+      admin_root_path
+    when Customer
+      root_path
+     end
+  end
 
   protected
 

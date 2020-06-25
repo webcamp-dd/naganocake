@@ -1,32 +1,38 @@
-<div>
-<h1>商品一覧</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-10">
+			<h1>商品一覧</h1>
 
-<%# 新規登録ボタン %>
-<%= link_to new_admin_product_path do %>
-<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-<% end %>
+			<%# 新規登録ボタン %>
+			<%= link_to new_admin_product_path do %>
+			<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+			<% end %>
 
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th>商品ID</th>
-			<th>商品名</th>
-			<th>税抜価格</th>
-			<th>ジャンル</th>
-			<th>ステータス</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @products.each do |product| %>
-		<tr>
-			<td><%= product.id %></td>
-			<td><%= link_to product.name, admin_product_path(product) %></td>
-			<td><%= product.unit_price.to_s(:delimited) %></td>
-			<td><%= product.product_category.name %></td>
-			<td><% if product.sales_status == true %>販売中<% else %>売切れ<% end %></td>
-		</tr>
-		<% end %>
-		<%= paginate @products %>
-	</tbody>
-</table>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>商品ID</th>
+						<th>商品名</th>
+						<th>税抜価格</th>
+						<th>ジャンル</th>
+						<th>ステータス</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @products.each do |product| %>
+					<tr>
+						<td><%= product.id %></td>
+						<td><%= link_to product.name, admin_product_path(product) %></td>
+						<td><%= product.unit_price.to_s(:delimited) %></td>
+						<td><%= product.product_category.name %></td>
+						<td><% if product.sales_status == true %>販売中<% else %>売切れ<% end %></td>
+					</tr>
+					<% end %>
+					<%= paginate @products %>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
 </div>
