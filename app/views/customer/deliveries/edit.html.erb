@@ -1,6 +1,9 @@
-<h3>配送先編集</h3>
-
-
+<div class="col-lg-1"> </div>
+<div class="container">
+    <div class="row">  
+        <div class="col-lg-10">
+<%# body %>
+<div class="title mb-2"><h3>配送先編集</h3></div>
 <%= notice %>
 
 <%= form_with(model: @delivery, url: customer_delivery_path, html: {method: :patch} )do |f| %>
@@ -16,7 +19,14 @@
             <%= f.label :name, "宛名" %><%= f.text_field :name, class:"form-control" %>
         </div>
         <div class="form_action">
-        <%= f.submit "編集する" ,class: "btn-sm btn-success"%>
+        <%= f.submit "編集する" ,class: "btn-sm btn-warning"%>
         </div>
     </form>
  <% end %>
+
+ <%# body %>
+        </div>
+    <div>
+</div>
+<div class="col-lg-1"> 
+</div>

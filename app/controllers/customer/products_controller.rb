@@ -9,6 +9,7 @@ class Customer::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @cart_product = CartProduct.new
     @category = ProductCategory.all
+    
   end
 
 
