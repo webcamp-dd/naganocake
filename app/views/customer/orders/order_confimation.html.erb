@@ -1,17 +1,23 @@
-<div class="col-lg-1"> 
 
-</div>
 <div class="container">
-    <div class="row">  
-        <div class="col-lg-10"> 
-        <h3>注文情報確認</h3>
-            <table>
+    <div class="row"> 
+                        <%#ステップバー  %>
+        <%= render 'customer/orders/step_bar3'%>
+    </div>
+<%# body %>   
+    <div class="row"> 
+        <div class="title"><h3>注文情報確認</h3></div> 
+    </div>
+
+    <div class="row"> 
+        <div class="col-xs-8">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>商品名</th>
-                        <th>単価(税込)</th>
-                        <th>数量</th>
-                        <th>小計</th>
+                    <th class="warning">商品名</th>
+                        <th class="warning">単価(税込)</th>
+                        <th class="warning">数量</th>
+                        <th class="warning">小計</th>
                     </tr>
                 </thead>
                 <% product_sum = 0 %>
@@ -29,33 +35,43 @@
                     <% product_sum += sumone %>
                 <% end %>
             </table>
-
-                <table>
+        </div>
+        
+        <div class="col-xs-4">
+            <table class="table table-bordered">
+            <tr>
+                <th class="warning">送料</th>
+                <td><%= @order.postage.to_i %></td> <%# 修正予定 %>
+            </tr>
                 <tr>
-                    <th>送料</th>
-                    <td><%= @order.postage.to_i %></td> <%# 修正予定 %>
-                </tr>
-                    <tr>
-                    <th>商品合計</th>
-                    <td><%= product_sum %></td>  <%# 修正予定 %>
-                
-                </tr>  <tr>
-                    <th>請求金額</th>
-                    <td><%= product_sum + @order.postage.to_i %></td>
-                </tr>
-                </table>
+                <th class="warning">商品合計</th>
+                <td><%= product_sum %></td>  <%# 修正予定 %>
+            
+            </tr>  
+            <tr>
+                <th class="warning">請求金額</th>
+                <td><%= product_sum + @order.postage.to_i %></td>
+            </tr>
+            </table>
+        </div>
+    </div>
 
-                <h4>支払い方法</h4>
-                    <% if @order.payment == "creditcard" %>
-                    クレジットカード
-                    <% else %>
-                    銀行振込
-                    <% end %>
-                <h4>お届け先</h4>
-                    <%= @order.postal_code + @order.address %>
-                    <%= @order.name %>
+    <div class="row"> 
+        <div class="col-xs-12">
+            <div class="title"><h3>支払い方法</h3></div>
+                <% if @order.payment == "creditcard" %>
+                クレジットカード
+                <% else %>
+                銀行振込
+                <% end %>
+            <div class="title"><h3>お届け先</h3></div>
+                <%= @order.postal_code + @order.address %>
+                <%= @order.name %>
+        </div>
+    </div>
 
-
+    <div class="row"> 
+        <div class="col-xs-12">
                 <%= form_with(model: @order, local: true, url: customer_orders_path, method: :post) do |f| %>
                 <%= f.hidden_field :key_order_id, :value => @order.id %>
                 <%= f.hidden_field :key_payment, :value =>  @order.payment %> 
@@ -64,11 +80,11 @@
                 <%= f.hidden_field :key_name, :value => @order.name %> 
                 <%= f.hidden_field :key_product_sum, :value => product_sum %>
 
-                <button type="button" class=" btn btn-primary"><%= f.submit "購入を確定する" %></button>
+            <div class="next-btn text-center m-5">
+            <%= f.submit "購入を確定する", class:"next btn btn-warning btn-lg" %>
                 <% end %>
-                <%# 以降レイアウト用 %>
+                </div>
+        <%# body %>
         </div>
-    <div>
-</div>
-<div class="col-lg-1"> 
-</div>
+    </div>
+<div>

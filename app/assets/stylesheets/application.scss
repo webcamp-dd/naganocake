@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require "./customer/cart_products.scss"
  */
 
  @import "bootstrap-sprockets";
@@ -21,4 +22,15 @@ header {
     height: 100px;
 }
 
+body {
+    background-image: image-url('naganocake_back.jpg'); 
+    background-attachment: fixed;
+
+  }
+
+  @font-face {
+    font-family: 'GenJyuuGothicX';
+    src: font-url('/assets/GenJyuuGothicX-P-Bold.ttf');
+
+  }
 

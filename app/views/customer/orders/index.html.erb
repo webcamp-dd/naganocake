@@ -1,14 +1,19 @@
-<h3>注文履歴一覧</h3>
+<div class="col-lg-1"> </div>
+<div class="container">
+    <div class="row">  
+        <div class="col-lg-10">
+<%# body %>
+    <div class="title mb-2"><h3>注文履歴一覧</h3></div> 
 
-<table>
+ <table class="table">
 　<thead>
 		<tr>
-			<th>注文日</th>
-			<th>配送先</th>
-			<th>注文商品</th>
-			<th>支払い金額</th>
-            <th>ステータス</th>
-            <th>注文詳細</th>
+            <th style="width:10%", class="warning">注文日</th>
+			<th style="width:10%", class="warning">配送先</th>
+			<th style="width:10%", class="warning">注文商品</th>
+			<th style="width:10%", class="warning">支払い金額</th>
+            <th style="width:10%", class="warning">ステータス</th>
+            <th style="width:10%", class="warning">注文詳細</th>
 		</tr>
     </thead>
     <% @orders.each do |order| %>
@@ -39,7 +44,7 @@
                     <% end %>
                 </td>
                 <td>
-                    <%= link_to "表示する",customer_order_path(order), class: "btn-sm btn-primary" %>
+                    <%= link_to "表示する",customer_order_path(order), class: "btn-sm btn btn-warning" %>
                 </td>
             </tr>
         </tbody>
@@ -47,3 +52,9 @@
 </table>
 
 
+<%# body %>
+        </div>
+    <div>
+</div>
+<div class="col-lg-1"> 
+</div>
