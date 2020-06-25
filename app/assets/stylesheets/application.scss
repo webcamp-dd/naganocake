@@ -22,6 +22,16 @@ header {
     height: 100px;
 }
 
+
+.border {
+    border: none;
+}
+
+.sign-up-btn {
+    margin-top: 30px;
+}
+
+
 body {
     background-image: image-url('naganocake_back.jpg'); 
     background-attachment: fixed;
@@ -34,3 +44,7 @@ body {
 
   }
 
+
+// .ssssss > li > a {
+//     color: blue($color: #000000);
+// }
