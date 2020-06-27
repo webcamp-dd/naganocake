@@ -1,6 +1,6 @@
 class Customer::ProductsController < ApplicationController
   def index
-    @products = Product.page(params[:page]).reverse_order
+    @products = Product.page(params[:page]).reverse_order.where(sales_status: true)
     @product = Product.new
     @category = ProductCategory.all
   end
@@ -14,7 +14,9 @@ class Customer::ProductsController < ApplicationController
 
 
   def category
-    @categories = ProductCategory.find(params[:id])
+    @category = ProductCategory.find(params[:id])
+    # @product = @category.products.select
+    @categories = ProductCategory.all
   end
 
   private
