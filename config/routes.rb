@@ -34,15 +34,16 @@ Rails.application.routes.draw do
     get 'products/category/:id' => 'products#category', as: 'category'
     get 'products/index'
     # get 'products/show'
-    resources :products, only: [:new, :create, :show]
+    resources :products, only: [:new, :create, :show] do
+      resource :favorites, only: [:create, :destroy]
+    end
 
     resources :productcategories, only: [:new, :create,]
 
     get 'customers/leave' => 'customers#leave'
     # get 'customers/mypage/:id' =>'customers#show'
-    resources :customers, only: [:edit, :show, :update, :destroy] do
-      resource :favorites, only: [:create, :destroy]
-    end
+    resources :customers, only: [:edit, :show, :update, :destroy] 
+    
     # patch 'customers/update'
     # get 'customers/edit'
     get 'customers/delete_confimation/:id' =>'customers#delete_confimation', as: 'helf'
