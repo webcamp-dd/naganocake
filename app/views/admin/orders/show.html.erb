@@ -44,7 +44,7 @@
 
 	<div class="row">
 		<div class="col-xs-9">
-			<table class="table table-hover">
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th class="warning">商品名</th>
@@ -57,7 +57,7 @@
 				</thead>
 				<tbody>
 					<% @order_product.each do |g| %>
-					<tr>
+					<tr class="active">
 						<td><%= g.product.name %></td>
 						<td align="center"><%= ((g.purchase_unit_price * 1.1).round).to_s(:delimited) %></td>
 						<td align="center"><%= g.quantity %></td>
@@ -74,22 +74,22 @@
 			</table>
 		</div>
 		<div class="col-xs-3">
-			<table>
+			<table class="table table-bordered">
 				<thead>
 					<tr></tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>商品合計</td>
-						<td align="right"><%=@order.total_price.to_s(:delimited) %>円</td>
+						<td class="warning">商品合計</td>
+						<td align="right" class="active"><%=@order.total_price.to_s(:delimited) %>円</td>
 					</tr>
 					<tr>
-						<td>送料</td>
-						<td align="right"><%=@order.postage.to_s(:delimited) %>円</td>
+						<td class="warning">送料</td>
+						<td align="right" class="active"><%=@order.postage.to_s(:delimited) %>円</td>
 					</tr>
 					<tr>
-						<td>請求金額合計</td>
-						<td align="right"><%= (@order.total_price + @order.postage).to_s(:delimited) %>円</td>
+						<td class="warning">請求金額合計</td>
+						<td align="right" class="active"><%= (@order.total_price + @order.postage).to_s(:delimited) %>円</td>
 					</tr>
 				</tbody>
 			</table>
