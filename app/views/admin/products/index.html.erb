@@ -12,7 +12,7 @@
 				<% end %>
 			</div>
 
-			<table class="table table-hover">
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th class="warning">商品ID</th>
@@ -24,7 +24,7 @@
 				</thead>
 				<tbody>
 					<% @products.each do |product| %>
-					<tr>
+					<tr class="active">
 						<td><%= product.id %></td>
 						<td><%= link_to product.name, admin_product_path(product) %></td>
 						<td><%= product.unit_price.to_s(:delimited) %></td>

@@ -7,7 +7,7 @@
 	</div>
   <br>
 
-  <%= form_with model: @product, url:admin_products_path(@product), class:"form-horizontal" do |f| %>
+  <%= form_with model: @product, url:admin_products_path(@product),local: :true, class:"form-horizontal" do |f| %>
   <div class="row">
     <div class="col-xs-5">
      <%= f.attachment_field :product_image %>
