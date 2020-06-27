@@ -8,9 +8,17 @@ class Product < ApplicationRecord
 	attachment :product_image
 	belongs_to :product_category
 	has_many :favorites, dependent: :destroy
-	def favorited_by?(user)
-		favorites.where(user_id: user.id).exists?
+
+
+	validates :name, 				 presence: true
+	validates :description,  presence: true
+	validates :unit_price, 	 presence: true
+	validates :sales_status, presence: true
+
+
+	
+	def favorited_by?(customer)
+		favorites.where(customer_id: customer.id).exists?
 	end
+  
 end
-
-

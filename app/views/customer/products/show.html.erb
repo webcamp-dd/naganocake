@@ -13,6 +13,15 @@
                            <h2><%= @product.name  %></h2>
                            <%= @product.description %>
                            <p><%= @product.unit_price.to_s(:delimited) %>円</p>
+                           <% if @product.favorited_by?(current_customer) %>
+                                <%= link_to customer_product_favorites_path(@product), method: :delete, remote: true do %>
+                                    <span class="glyphicon glyphicon-heart"><%= @product.favorites.count%></span>
+                                <% end %>
+                            <% else %>
+                                <%= link_to customer_product_favorites_path(@product), method: :post, remote: true do %>
+                                    <span class="glyphicon glyphicon-heart-empty"><%= @product.favorites.count %></span>
+                                <% end %>
+                            <% end %>
                         <%= form_with model: @cart_product, url: customer_cart_products_path(product_id: @product), local:true do |f| %>
 
                             <%= f.select :quantity, [[1, 1],[2, 2],[3, 3]] %>
