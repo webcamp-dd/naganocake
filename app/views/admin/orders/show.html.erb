@@ -1,16 +1,15 @@
+<div class="col-xs-1"></div>
+
 <div class="container">
-
 	<div class="row">
-		<div class="col-xs-1"></div>
-		<div class="col-xs-10">
-			<h1>注文履歴詳細</h1>
+		<div class="col-xs-12">
+			<div class="title"><h3>注文履歴詳細</h3></div>
 		</div>
-		<div class="col-xs-1"></div>
 	</div>
+	<br>
 
 	<div class="row">
-		<div class="col-xs-1"></div>
-		<div class="col-xs-10">
+		<div class="col-xs-12">
 			<%= notice %>
 			<table>
 				<thead>
@@ -41,21 +40,19 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="col-xs-1"></div>
 	</div>
 
 	<div class="row">
-		<div class="col-xs-1"></div>
-		<div class="col-xs-7">
+		<div class="col-xs-9">
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>商品名</th>
-						<th>単価（税込）</th>
-						<th>数量</th>
-						<th>小計</th>
-						<th>製作ステータス</th>
-						<th></th>
+						<th class="warning">商品名</th>
+						<th class="warning">単価（税込）</th>
+						<th class="warning">数量</th>
+						<th class="warning">小計</th>
+						<th class="warning">製作ステータス</th>
+						<th class="warning"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -65,7 +62,6 @@
 						<td align="center"><%= ((g.purchase_unit_price * 1.1).round).to_s(:delimited) %></td>
 						<td align="center"><%= g.quantity %></td>
 						<td align="center"><%= ((g.purchase_unit_price * g.quantity * 1.1).round).to_s(:delimited) %></td>
-
 						<%= form_with model: g , url: admin_order_product_path(g) do |h| %>
 						<td align="center">
 							<%= h.select :status, [["着手不可","着手不可"],["製作待ち","製作待ち"],["製作中","製作中"],["製作完了","製作完了"]] %>
@@ -77,11 +73,10 @@
 				</tbody>
 			</table>
 		</div>
-
 		<div class="col-xs-3">
 			<table>
 				<thead>
-					<tr><td>ede</td><td>defre</td></tr>
+					<tr></tr>
 				</thead>
 				<tbody>
 					<tr>
@@ -100,5 +95,5 @@
 			</table>
 		</div>
 	</div>
-	<div class="col-xs-1"></div>
 </div>
+<div class="col-xs-1"></div>
