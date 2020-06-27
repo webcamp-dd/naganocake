@@ -1,60 +1,54 @@
+<div class="col-xs-1"></div>
 <div class="container">
-
 	<div class="row">
-		<div class="col-xs-1"></div>
-		<div class="col-xs-10">
-			<h1>商品新規登録</h1>
+		<div class="col-xs-12">
+			<div class="title"><h3>商品新規登録</h3></div>
 		</div>
-		<div class="col-xs-1"></div>
 	</div>
+  <br>
 
-	<div class="row">
-		<div class="col-xs-1"></div>
-		<div class="col-xs-3">
-			<%= form_with model: @product , url:admin_products_path(@product) do |f| %>
-			<%= f.attachment_field :product_image %>
-		</div>
+  <%= form_with model: @product, url:admin_products_path(@product), class:"form-horizontal" do |f| %>
+  <div class="row">
+    <div class="col-xs-5">
+     <%= f.attachment_field :product_image %>
+   </div>
 
-		<div class="col-xs-4">
-			<table>
-				<thead>
-					<tr></tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><%= f.label :商品名 %></td>
-						<td><%= f.text_field :name %></td>
-					</tr>
-					<tr>
-						<td><%= f.label :商品説明 %></td>
-						<td><%= f.text_area :description %></td>
-					</tr>
-					<tr>
-						<td><%= f.label :ジャンル %></td>
-						<td><%= f.collection_select :product_category_id, ProductCategory.all, :id,:name, include_blank: "--選択してください--" %>
-						</td>
-					</tr>
-					<tr>
-						<td><%= f.label :税抜価格 %></td>
-						<td><%= f.text_field :unit_price %></td>
-					</tr>
-					<tr>
-						<td><%= f.label :販売ステータス %></td>
-						<td><%= f.select :sales_status, [["販売中","0"],["売切れ","1"]], include_blank: "--選択してください--" %>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="col-xs-4"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-8"></div>
-		<div class="col-xs-3">
-			<%= f.submit "新規登録",class: "btn btn-primary" %>
-		</div>
-		<% end %>
-		<div class="col-xs-1"></div>
-	</div>
+   <div class="col-xs-7">
+    <div class="form-group">
+      <%= f.label :商品名 ,class:"col-sm-3" %>
+      <div class="col-sm-9">
+        <%= f.text_field :name, class:"form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+     <%= f.label :商品説明,class:"col-sm-3" %>
+     <div class="col-sm-9">
+       <%= f.text_area :description, class:"form-control" %>
+     </div>
+   </div>
+   <div class="form-group">
+     <%= f.label :ジャンル,class:"col-sm-3" %>
+     <div class="col-sm-9">
+       <%= f.collection_select :product_category_id, ProductCategory.all, :id,:name, include_blank: "--選択してください--" %>
+     </div>
+   </div>
+   <div class="form-group">
+    <%= f.label :税抜価格,class:"col-sm-3" %>
+    <div class="col-sm-9">
+      <%= f.text_field :unit_price, class:"form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :販売ステータス,class:"col-sm-3" %>
+    <div class="col-sm-9">
+      <%= f.select :sales_status, [["販売中","0"],["売切れ","1"]], include_blank: "--選択してください--", class:"form-control" %>
+    </div>
+  </div>
+  <div class="pull-right">
+    <%= f.submit "新規登録",class: "btn btn-primary" %>
+  </div>
 </div>
+</div>
+<% end %>
+</div>
+<div class="col-xs-1"></div>
