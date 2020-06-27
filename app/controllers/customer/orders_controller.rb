@@ -1,36 +1,42 @@
 class Customer::OrdersController < ApplicationController
   before_action :authenticate_customer!
+ 
 
-
+  def new
+    @order = Order.new
+    @add_delivery = Delivery.new #データ保存というよりエラー防止のため追加
+  end
 
   def order_confimation 
-    
     @order = Order.new(order_params)
     @order.postage = 800
     @order.customer_id = current_customer.id
     @order.payment = params[:payment]
     @cart_products = current_customer.cart_products
-    if params[:delivery_address] == "a"
+    if params[:order][:delivery_address] == "a"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.family_name + current_customer.first_name
   
-    elsif params[:delivery_address] == "b"
+    elsif params[:order][:delivery_address] == "b"
       @order.postal_code = Delivery.find(params[:key]).postal_code
       @order.address = Delivery.find(params[:key]).address
       @order.name = Delivery.find(params[:key]).name
     else
-      @order.postal_code = params[:postal_code]
-      @order.address = params[:address]
-      @order.name = params[:name]
-
-      #宛先を新規追加
-      add_delivery = Delivery.new
-      add_delivery.customer_id = current_customer.id
-      add_delivery.postal_code = params[:postal_code]
-      add_delivery.address = params[:address]
-      add_delivery.name = params[:name]
-      add_delivery.save
+      #宛先を新規追加後に取得したparamsをorderテーブルに格納する順番に変更することでバリデーションエラー表示
+      @add_delivery = Delivery.new
+      @add_delivery.customer_id = current_customer.id
+      @add_delivery.postal_code = params[:order][:postal_code]
+      @add_delivery.address = params[:order][:address]
+      @add_delivery.name = params[:order][:name]
+      unless @add_delivery.save
+        render "new" and return #処理がそこで終了する
+      end
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
+      
+    
     end
   end
 

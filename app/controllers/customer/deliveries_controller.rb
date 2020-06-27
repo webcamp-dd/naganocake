@@ -1,5 +1,5 @@
 class Customer::DeliveriesController < ApplicationController
-  #before_action :authenticate_customer!
+  before_action :authenticate_customer!
   
   def index
     @customer = current_customer
@@ -13,9 +13,9 @@ class Customer::DeliveriesController < ApplicationController
     @delivery.customer_id = current_customer.id
     if @delivery.save
   		redirect_to customer_deliveries_path, notice: "配送先を保存しました"
-  	# else
-  	# 	@deliveries = Delivery.all
-  	# 	redirect_to customer_deliveries_path
+  	else
+  		@deliveries = Delivery.all
+  		render "index"
   	end
   end
 
@@ -33,7 +33,7 @@ class Customer::DeliveriesController < ApplicationController
   	if @delivery.update(delivery_params)
   		redirect_to customer_deliveries_path, notice: "配送先情報を更新しました"
   	else
-  		redirect_to :edit
+  		render "index"
   	end
   end
 
@@ -48,5 +48,5 @@ end
 private
 
 def delivery_params
-  params.require(:delivery).permit(:email, :postal_code, :address ,:name, :customer_id)
+  params.require(:delivery).permit(:email, :postal_code, :address, :name, :customer_id)
 end

@@ -5,7 +5,7 @@
 <%# body %>
     <div class="title mb-2"><h3>注文履歴一覧</h3></div> 
 
- <table class="table">
+ <table class="table table-bordered">
 　<thead>
 		<tr>
             <th style="width:10%", class="warning">注文日</th>
@@ -18,19 +18,19 @@
     </thead>
     <% @orders.each do |order| %>
         <tbody>
-            <tr>
-                <td><%= order.created_at.strftime('%Y/%m/%d')  %>
+            <tr class="active">
+                <td class="active"><%= order.created_at.strftime('%Y/%m/%d')  %>
                 </td>
-                <td><%= order.postal_code + order.address + order.name %>
+                <td class="active">〒<%= order.postal_code + order.address + order.name %>
                 </td>
-                <td><% order.order_products.each do |orderproduct| %>
+                <td class="active"><% order.order_products.each do |orderproduct| %>
                         <%= orderproduct.product.name %>
                     <% end %>
-                </td>
+                </td class="active">
                 <td>
                     <%= order.total_price.to_s(:delimited) %>
                 </td>
-                <td>
+                <td class="active">
                     <% if order.status == "payment_confirmation" %>
                     入金確認
                     <% elsif order.status == "in_production"  %>
@@ -43,7 +43,7 @@
                     入金待ち
                     <% end %>
                 </td>
-                <td>
+                <td class="active">
                     <%= link_to "表示する",customer_order_path(order), class: "btn-sm btn btn-warning" %>
                 </td>
             </tr>

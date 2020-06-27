@@ -8,7 +8,9 @@
 <%# body %>
     <div class="title mb-2"><h3>注文情報入力</h3></div> 
     <div class="form-group col-xs-12　text-left m-2">
-        <%= form_with(model: @order, local: true, url: customer_order_confimation_path(@order)) do |f| %>
+        <%= form_with(model: @order, local: true, url: customer_order_confimation_path(@order) , html: { id: "new-delivery-form"}) do |f| %>
+            <%= render '/layouts/errors', obj: @order %>
+             <%= render '/layouts/errors', obj: @add_delivery %>
             <div class="col-xs-12">
                 <div class="col-xs-2">
                     <b>支払い方法</b>
@@ -18,8 +20,8 @@
                         <li class="list-unstyled">
                          <div class="col-xs-12">
                             <div class="col-xs-4">
-                                <%= f.radio_button :payment, :creditcard %>
-                                <%= f.label :payment, "クレジットカード", {value: :creditcard, style: "display: inline-block;"} %>
+                                <%= f.radio_button :payment, "クレジットカード" %>
+                                <%= f.label :payment, "クレジットカード", {value: "クレジットカード" , style: "display: inline-block;"} %>
                             </div>
                             <%# <div class="col-xs-8">
                             </div> %>
@@ -28,8 +30,8 @@
                         <div class="col-xs-12">
                             <li class="list-unstyled">
                                 <div class="col-xs-4">
-                                    <%= f.radio_button :payment, :bank %>
-                                    <%= f.label :payment, "銀行振込", {value: :bank, style: "display: inline-block;"} %>
+                                    <%= f.radio_button :payment, "銀行振込" %>
+                                    <%= f.label :payment, "銀行振込", {value: "銀行振込", style: "display: inline-block;"} %>
                                 </div>
                                 <%# <div class="col-xs-8">
                                 </div> %>
@@ -79,7 +81,7 @@
                                                 <div class="address_text">郵便番号<br>(ハイフンなし)</div>
                                             </div>
                                             <div class="col-xs-7">
-                                                <%= f.text_field :postal_code %>
+                                                <%= f.text_field :postal_code, id:"postalcode" %>
                                             </div>
                                          </div>
                                         <div class="col-xs-12">
@@ -87,7 +89,7 @@
                                                 <div class="address_text">住所</div>
                                             </div>
                                             <div class="col-xs-7">
-                                                <%= f.text_field :address %>
+                                                <%= f.text_field :address, id:"address"  %>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
@@ -95,7 +97,7 @@
                                                 <div class="address_text">宛名</div>
                                             </div>
                                             <div class="col-xs-7">
-                                                <%= f.text_field :name %>
+                                                <%= f.text_field :name, id:"name"  %>
                                             </div>
                                          </div>
                                 </div>
