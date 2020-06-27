@@ -6,12 +6,15 @@
  <%#ステップバー  %>
  <%= render 'customer/cart_products/step_bar1'%>
             <div class="title"><h3>ショッピングカート</h3><div>
+            <%= notice %>
+
+
              <div class= "right_bottom">
                     <%= link_to "カートを空にする", customer_path(current_customer), method: :delete, data: {confirm: "カート内商品を全て削除してもよろしいですか？"}, class: "btn-right btn-sm btn-danger" %>
              </div>
 
             
-                <table class="table">
+                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th class="warning">商品名</th>
@@ -24,14 +27,14 @@
                     <% sum = 0 %>
                     <% @cart_products.each do |cart_product| %>
                         <tbody>
-                            <tr>
+                            <tr class="active">
                                 <td>
                                 <%= attachment_image_tag @product, :product_image, :fill, 100, 100, format: 'jpeg', fallback: "no-image-mini.jpg" %>
                                 <%= cart_product.product.name %>
                                 </td>
                                 <td><%= cart_product.product.unit_price %></td>
                                 <td>
-                                    <%= form_with model: cart_product, url: customer_cart_product_path(cart_product), method: :patch do |f| %>
+                                    <%= form_with model: cart_product, local: true,url: customer_cart_product_path(cart_product), method: :patch do |f| %>
                                         <%= f.number_field :quantity, selected: cart_product.quantity.to_i %>
                                         <%= f.submit "変更" %>
                                     <% end %>
@@ -48,12 +51,29 @@
                         <% sum += sumone %>
                     <% end %>
                 </table>
+                <%# モーダル %>
+             <div>
+             <%= link_to '新着商品', "", remote: true, class: "btn btn-lg, btn-primary", id:"newmodal"%>
+             </div>
+<!-- モーダルエリアここから -->
+            <section id="modalArea" class="modalArea">
+            <div id="modalBg" class="modalBg"></div>
+            <div class="modalWrapper">
+                <div class="modalContents">
+                <h1>Here are modal contents!</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                </div>
+                <div id="closeModal" class="closeModal">
+                ×
+                </div>
+            </div>
+            </section>
 
                 <%= link_to "買い物を続ける", customer_products_index_path, class: "shop-btn btn-sm btn-primary" %>
 
                 <div class="s_table">
-                <table class="small_table table">
-                        <tr>
+                <table class="small_table table table-bordered">
+                        <tr class="active">
                             <th class="warning">合計金額</th>
                             <td><%= sum.to_s(:delimited) %></td>
                     </tr>
@@ -69,3 +89,15 @@
 <div class="col-xs-1"> 
 
 </div>
+
+
+<%# モーダルJS %>
+
+<script>
+$('#newmodal').click(function(){
+      $('#modalArea').fadeIn();
+  });
+  $('#closeModal , #modalBg').click(function(){
+    $('#modalArea').fadeOut();
+  });
+</script>

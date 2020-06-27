@@ -44,7 +44,22 @@ body {
 
   }
 
+//   エラー文赤文字
 
+#error_explanation {
+    color: red;
+    font-family: 'GenJyuuGothicX';
+    }
+
+// フォント適応
+.title-sub h4{
+    font-family: 'GenJyuuGothicX';
+}
+
+.title h3{
+    font-family: 'GenJyuuGothicX';
+
+}
 // .ssssss > li > a {
 //     color: blue($color: #000000);
 // }

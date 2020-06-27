@@ -1,7 +1,15 @@
 class Order < ApplicationRecord
 
     after_initialize :set_default_values
-
+    # 注文情報入力フォームバリデーション
+    validates :payment, acceptance: true
+    validates :payment, presence: true
+    validates :postal_code, 
+                presence: true,
+                numericality: true
+    validates :address, presence: true
+    validates :name, presence: true
+  # 注文情報入力フォームバリデーションここまで
     belongs_to :customer
     has_many :cart_products, class_name: 'CartProduct', dependent: :destroy
     has_many :order_products, class_name: 'OrderProduct', dependent: :destroy
