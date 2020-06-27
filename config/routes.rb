@@ -49,7 +49,7 @@ resources :customers, only: [:index,:show,:edit,:update]
     get 'order/thanks' => 'orders#thanks'
     resources :deliveries, only: [:index, :create, :new, :edit, :update, :destroy]
     
-    get 'products/category/:id' => 'products#category'
+    get 'products/category/:id' => 'products#category', as: 'category'
     get 'products/index'
     # get 'products/show'
     resources :products, only: [:new, :create, :show]
@@ -58,7 +58,9 @@ resources :customers, only: [:index,:show,:edit,:update]
 
     get 'customers/leave' => 'customers#leave'
     # get 'customers/mypage/:id' =>'customers#show'
-    resources :customers, only: [:edit, :show, :update, :destroy]
+    resources :customers, only: [:edit, :show, :update, :destroy] do
+      resource :favorites, only: [:create, :destroy]
+    end
     # patch 'customers/update'
     # get 'customers/edit'
     get 'customers/delete_confimation/:id' =>'customers#delete_confimation', as: 'helf'

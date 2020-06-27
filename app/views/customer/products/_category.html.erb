@@ -1,8 +1,8 @@
 <h3>ジャンル検索</h3>
 <% category.each do |category| %>
-    <%= link_to customer_products_index_path(category.id) do %>
-            <p class="text-danger">
+    <p class="text-danger">
+        <%= link_to customer_category_path(category.id) do %>
                 <%= category.name %>
-            </p>
+    </p>
     <% end %>
 <% end %>
