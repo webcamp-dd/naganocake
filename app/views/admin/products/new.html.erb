@@ -6,8 +6,9 @@
 		</div>
 	</div>
   <br>
+  <%= render '/layouts/errors', obj: @product %>
 
-  <%= form_with model: @product, url:admin_products_path(@product),local: :true, class:"form-horizontal" do |f| %>
+  <%= form_with model: @product, url:admin_products_path,local: :true, class:"form-horizontal" do |f| %>
   <div class="row">
     <div class="col-xs-5">
      <%= f.attachment_field :product_image %>
@@ -41,7 +42,7 @@
   <div class="form-group">
     <%= f.label :販売ステータス,class:"col-sm-3" %>
     <div class="col-sm-9">
-      <%= f.select :sales_status, [["販売中","0"],["売切れ","1"]], include_blank: "--選択してください--", class:"form-control" %>
+      <%= f.select :sales_status, [["販売中","true"],["売切れ","false"]], include_blank: "--選択してください--", class:"form-control" %>
     </div>
   </div>
   <div class="pull-right">
