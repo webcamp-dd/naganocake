@@ -17,7 +17,7 @@
 				<tbody>
 					<% @orders.each do |f| %>
 					<tr class="active">
-						<td><%= link_to f.created_at.strftime('%Y/%m/%d %H:%M:%S') , admin_order_path(f) %></td>
+						<td><%= link_to f.created_at.strftime('%Y/%m/%d %H:%M:%S') , admin_order_path(f), data: {"turbolinks" => false} %></td>
 						<td><%= f.customer.family_name + f.customer.first_name %></td>
 						<td><%= f.order_products.sum(:quantity) %></td>
 						<td><%= f.status %></td>
