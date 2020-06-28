@@ -1,5 +1,6 @@
 class Delivery < ApplicationRecord
     belongs_to :customer
+    validates :payment, acceptance: true
     validates :postal_code, 
                 presence: true,
                 numericality: true

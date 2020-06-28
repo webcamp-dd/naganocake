@@ -9,9 +9,16 @@ class Customer::OrdersController < ApplicationController
 
   def order_confimation 
     @order = Order.new(order_params)
+    unless params[:order][:payment] 
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = '※支払い方法が選択されていません' and return
+    else
+      @order.payment = params[:order][:payment]
+    end
+   
     @order.postage = 800
     @order.customer_id = current_customer.id
-    @order.payment = params[:payment]
+    
     @cart_products = current_customer.cart_products
     if params[:order][:delivery_address] == "a"
       @order.postal_code = current_customer.postal_code
@@ -19,10 +26,11 @@ class Customer::OrdersController < ApplicationController
       @order.name = current_customer.family_name + current_customer.first_name
   
     elsif params[:order][:delivery_address] == "b"
-      @order.postal_code = Delivery.find(params[:key]).postal_code
-      @order.address = Delivery.find(params[:key]).address
-      @order.name = Delivery.find(params[:key]).name
-    else
+      @order.postal_code = Delivery.find(params[:order][:key]).postal_code
+      @order.address = Delivery.find(params[:order][:key]).address
+      @order.name = Delivery.find(params[:order][:key]).name
+    
+    elsif params[:order][:delivery_address] == "c"
       #宛先を新規追加後に取得したparamsをorderテーブルに格納する順番に変更することでバリデーションエラー表示
       @add_delivery = Delivery.new
       @add_delivery.customer_id = current_customer.id
@@ -35,8 +43,10 @@ class Customer::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
+    else
+      flash[:notice] = '※支払い方法と配送先を選択してください'
+      redirect_back(fallback_location: root_path) and return
       
-    
     end
   end
 

@@ -2,11 +2,11 @@
   <div class="container">
     <nav class='nav navbar-bg-bark navbar-left' >
       <% if customer_signed_in? %>
-      <%= link_to  "ロゴ予定", root_path %>
+       <%= link_to image_tag("toplogo.jpg"), root_path %>
       <% elsif admin_signed_in? %>
-      <%= link_to "ロゴ予定", admin_root_path %>
+      <%= link_to image_tag("toplogo.jpg"), admin_root_path %>
       <% else %>
-      <%= link_to  "ロゴ予定", root_path %>
+      <%= link_to image_tag("toplogo.jpg"), root_path %>
       <% end %>
     </nav>
     <nav>

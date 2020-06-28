@@ -62,8 +62,10 @@
             <div class="title"><h3>支払い方法</h3></div>
                 <% if @order.payment == "クレジットカード" %>
                 クレジットカード
-                <% else %>
+                <% elsif @order.payment == "銀行振込" %>
                 銀行振込
+                <% else %>
+                選択されていません
                 <% end %>
             <div class="title"><h3>お届け先</h3></div>
                 〒<%= @order.postal_code.to_s + @order.address.to_s %>
