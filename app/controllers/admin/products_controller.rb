@@ -12,6 +12,8 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       redirect_to admin_product_path(@product), notice: "保存できました"
+    else
+      render "new"
     end
   end
 
