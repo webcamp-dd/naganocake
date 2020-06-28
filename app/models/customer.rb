@@ -7,5 +7,14 @@ class Customer < ApplicationRecord
   has_many :orders,dependent: :destroy
   has_many :deliveries, dependent: :destroy
   has_many :favorites, dependent: :destroy
+
+  validates :family_name, length: {maximum: 20, minimum: 1}
+  validates :first_name, length: {maximum: 20, minimum: 1}
+  validates :kana_family_name, length: {maximum: 20, minimum: 1}
+  validates :kana_first_name, length: {maximum: 20, minimum: 1}
+  validates :postal_code, length: { is: 7 }
+  validates :phone_number, length: { in: 10..11 }
+
+
   acts_as_paranoid
 end

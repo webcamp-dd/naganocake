@@ -7,3 +7,17 @@ ja:
         name: 宛先名
         postal_code: 郵便番号
         address: 住所
+
+
+ja:
+  activerecord:
+    models:
+        customers:会員
+    attributes:
+        amily_name:姓
+        first_name:名
+        kana_family_name:カナ姓
+        kana_first_name:カナ名
+        postal_code：郵便番号
+        address：住所
+        phone_number:電話番号
