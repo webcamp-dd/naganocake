@@ -14,7 +14,7 @@
 	ProductCategory.create!(
 		[
 		  {
-			name: 'ケーキー'
+			name: 'ケーキ'
 		  },
 		  {
 			name: 'クッキー'
@@ -31,7 +31,7 @@
 
     Product.create!(
       [
-        {product_category_id: 1,unit_price: 4000,name: 'フルーツタルト',description: "フルーツたっぷり使用したタルトです。夏のお誕生ひ祝いにぴったりな爽やかな一品となっております。",sales_status: true,product_image:open("./app/assets/images/cake1.jpg")},
+    {product_category_id: 1,unit_price: 4000,name: 'フルーツタルト',description: "フルーツたっぷり使用したタルトです。夏のお誕生ひ祝いにぴったりな爽やかな一品となっております。",sales_status: true,product_image:open("./app/assets/images/cake1.jpg")},
 		{product_category_id: 1,unit_price: 700,name: 'チョコレートケーキ',description: "カカオ60％で苦味のある大人のチョコレートケーキです。糖分が抑えられているのでダイエット中の方にもおすすめです",sales_status: true,product_image:open("./app/assets/images/cake2.jpg")},
 		{product_category_id: 1,unit_price: 2000,name: 'オレンジタルト',description: "季節のオレンジを使用したタルト。酸味の効いた味わいで甘いものが苦手な方にも楽しんでいただけるかと思います",sales_status: true,product_image:open("./app/assets/images/cake3.jpg")},
 		{product_category_id: 1,unit_price: 450,name: '苺のミニパイケーキ',description: "一口サイズのミニパイケーキ。",sales_status: true,product_image:open("./app/assets/images/cake4.jpg")},
