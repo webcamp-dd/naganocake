@@ -16,14 +16,21 @@
                                 <%= link_to product.name, customer_product_path(product.id) %>
                                 <%= product.unit_price.to_s(:delimited) %>円
                             </div>
-                            <% if product.favorited_by?(current_customer) %>
-                                <%= link_to customer_product_favorites_path(product), method: :delete, remote: true do %>
-                                    <span class="glyphicon glyphicon-heart"><%= product.favorites.count%></span>
+                            <% if customer_signed_in? %>
+                                <% if product.favorited_by?(current_customer) %>
+                                    <%= link_to customer_product_favorites_path(product), method: :delete, remote: true do %>
+                                        <span class="glyphicon glyphicon-heart"><%= product.favorites.count%></span>
+                                    <% end %>
+                                <% else %>
+                                    <%= link_to customer_product_favorites_path(product), method: :post, remote: true do %>
+                                        <span class="glyphicon glyphicon-heart-empty"><%= product.favorites.count %></span>
+                                    <% end %>
                                 <% end %>
-                            <% else %>
-                                <%= link_to customer_product_favorites_path(product), method: :post, remote: true do %>
-                                    <span class="glyphicon glyphicon-heart-empty"><%= product.favorites.count %></span>
-                                <% end %>
+                            <%# <% else %>
+                                <%# <p>お気に入りには会員登録が必要です</p>
+                                 <%= link_to new_customer_registration_path %>
+                                        <%# <span class="glyphicon glyphicon-heart"><%= product.favorites.count%></span>
+                                <%# <% end %> 
                             <% end %>
                         </div>
                     <% end %>
