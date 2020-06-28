@@ -1,8 +1,8 @@
-<h3>ジャンル検索</h3>
+<div class="title"><h4><span class="glyphicon glyphicon-search" aria-hidden="true"></span>カテゴリーから探す</h4></div>
 <% category.each do |category| %>
-    <p class="text-danger">
+    <%# <p class="text-danger"> %>
         <%= link_to customer_category_path(category.id) do %>
-                <%= category.name %>
-    </p>
+                <div class="title"><p><%= category.name %></p></div>
+    <%# </p> %>
     <% end %>
 <% end %>

@@ -46,28 +46,7 @@
                         <% sum += sumone %>
                     <% end %>
                 </table>
-                <%# モーダル %>
-             <div>
-             <div class="btn-stitch"><%= link_to '新着商品', "", remote: true, id:"newmodal"%>
-             </div>
-             </div>
-<!-- モーダルエリアここから -->
-            <div class="row">  
-                <section id="modalArea" class="modalArea">
-                <div id="modalBg" class="modalBg"></div>
-                <div class="modalWrapper">
-                    <div class="modalContents">
-                    <h1>この夏限定の新商品 <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span></h1>
-                    <%= image_tag 'recomend_cake.jpg', class:"cake_image" %>
-                    <p>フルーツいっぱいのミルクレープが新登場。数量限定となっております。 </p>
-                    </div>
-                    <div id="closeModal" class="closeModal">
-                    ×
-                    </div>
-                </div>
-                </section>
-            </div>
-<!-- モーダルエリアここまで -->
+
     <div class="row">  
     <div class="col-xs-10">
         <div class="bottom">
@@ -98,13 +77,3 @@
         </div>
     <div>
 </div>
-
-<%# モーダルJS %>
-<script>
-$('#newmodal').click(function(){
-      $('#modalArea').fadeIn();
-  });
-  $('#closeModal , #modalBg').click(function(){
-    $('#modalArea').fadeOut();
-  });
-</script>

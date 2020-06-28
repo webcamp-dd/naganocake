@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav navbar-right ">
         <% if customer_signed_in? %>
         <li  aria-hidden="true">
-          <%= link_to "マイページ", customer_customer_path(current_customer.id), class: "glyphicon glyphicon-cutlery text-warning" %>
+          <%= link_to " マイページ", customer_customer_path(current_customer.id), class: "glyphicon glyphicon-cutlery text-warning" %>
         </li>
         <li  aria-hidden="true">
           <%= link_to " 商品一覧", customer_products_index_path, class: "glyphicon glyphicon-cutlery text-warning" %>
