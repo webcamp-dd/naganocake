@@ -3,20 +3,24 @@
         <div class="col-xs-1"></div>
         <div class="col-xs-3">
             <%= render 'customer/products/category', category: @category %>
+            <%= render 'customer/products/new_product'%>
         </div>
-        <div class="col-xs-6 message">
-            <p>
-                ようこそ、NaganoCakeへ！<br>
-                このサイトは、ケーキ販売のECサイトになります。<br>
+<div class="col-xs-6 message">         
+<div class="example">
+  <%= image_tag 'topimage.jpg', class:"topimage" %>
+             <div class="top-title">
+                <h3>ようこそ、NaganoCakeへ！</h3><br><br>
+                <p>このサイトは、<br>ケーキ販売のECサイトになります。<br><br><br>
                 会員でない方も商品の閲覧はできますが、<br>
                 購入には会員登録が必要になります。
-            </p>
+            </p></div>
+</div>     
         </div>
     </div>
     <div class="row section2">
         <div class="col-xs-3"></div>
         <div class="col-xs-9 recommended">
-            <h3>オススメ商品(お気に入り順)</h3>
+            <div class="title"><h4><span class="glyphicon glyphicon-flag" aria-hidden="true"></span>オススメ商品(お気に入り順)</h4></div>
                 <% @all_ranks.each_with_index do |product, i| %>
                 <div class="main-contet">
                     <%= i + 1 %>位
