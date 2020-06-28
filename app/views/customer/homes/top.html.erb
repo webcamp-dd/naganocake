@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row section1">
         <div class="col-xs-1"></div>
+            <%= notice %>
         <div class="col-xs-3">
             <%= render 'customer/products/category', category: @category %>
         </div>
@@ -25,6 +26,7 @@
                     <% end %>
                             <%= link_to product.name, customer_product_path(product.id) %>
                             <%= product.unit_price.to_s(:delimited) %>円
+                            <span class="glyphicon glyphicon-heart-empty"><%= product.favorites.count %></span>
                     </div>
                 <% end %>
         </div>

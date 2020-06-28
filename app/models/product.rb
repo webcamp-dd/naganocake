@@ -15,6 +15,7 @@ class Product < ApplicationRecord
 	validates :unit_price, 	 presence: true
 	# validates :sales_status, presence: true
 
+	mount_uploader :image, ImageUploader
 
 	
 	def favorited_by?(customer)

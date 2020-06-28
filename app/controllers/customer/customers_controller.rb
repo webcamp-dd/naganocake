@@ -21,7 +21,7 @@ class Customer::CustomersController < ApplicationController
   def update
 	  @customer = Customer.find(params[:id])
 	  if @customer.update(customer_params)
-		  redirect_to customer_customer_path(@customer)
+		  redirect_to customer_customer_path(@customer), notice: "更新完了"
 	  else
 		  render 'edit'
 	  end
