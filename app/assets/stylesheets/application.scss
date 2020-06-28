@@ -44,6 +44,12 @@ body {
 
   }
 
+  @font-face {
+    font-family: 'GenJyuuGothicN';
+    src: font-url('/assets/GenJyuuGothicX-Normal.ttf');
+
+  }
+
 //   エラー文赤文字
 
 #error_explanation {
@@ -58,7 +64,7 @@ body {
 
 .title h3{
     font-family: 'GenJyuuGothicX';
-
+    font-size:25px;
 }
 // .ssssss > li > a {
 //     color: blue($color: #000000);

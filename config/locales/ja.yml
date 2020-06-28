@@ -4,6 +4,6 @@ ja:
         delivery:配送先
     attributes:
       delivery:
-        name: 宛先名
+        name: 宛名
         postal_code: 郵便番号
         address: 住所
