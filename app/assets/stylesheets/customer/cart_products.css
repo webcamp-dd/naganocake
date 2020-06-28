@@ -1,0 +1,61 @@
+@charset "UTF-8";
+.title h3 {
+  font-family: 'GenJyuuGothicX';
+  font-size: 50px;
+}
+
+.next-btn {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.right_bottom {
+  text-align: right;
+  margin: 20px 0;
+}
+
+.small_table {
+  width: 20%;
+  margin-left: 700px;
+  display: inline-block;
+}
+
+.s_table {
+  display: inline-block;
+}
+
+.shop-btn {
+  display: inline-block;
+  float: left;
+}
+
+.next-btn {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.title-sub h4 {
+  font-family: 'GenJyuuGothicX';
+}
+
+.title h3 {
+  font-family: 'GenJyuuGothicX';
+}
+
+/* 以下ボタンスタイル */
+button {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #282828;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.bottom {
+  padding-top: 10px;
+}
+
+.next-btn {
+  padding-bottom: 15px;
+}
+/*# sourceMappingURL=cart_products.css.map */
