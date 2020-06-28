@@ -2,49 +2,51 @@
 	<div class="row">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-10">
-			<div class="title"><h3><%= @customer.family_name + @customer.first_name %>さんの会員情報編集</h3></div>
+			<div class="title">
+				<h3><%= @customer.family_name + @customer.first_name %>さんの会員情報編集</h3>
+			</div>
 			<br>
 			<%= render '/layouts/errors', obj: @customer %>
 
-			<table class="table table-hover">
+			<table class="table table-bordered">
 				<tr>
-					<td>顧客ID</td>
-					<td><%= @customer.id %></td>
+					<td class="warning">顧客ID</td>
+					<td class="active"><%= @customer.id %></td>
 				</tr>
-				<%= form_with model: @customer, url:admin_customer_path(@customer), local: true do |f| %>
+				<%= form_with model: @customer, url:admin_customer_path(@customer.id), local: true, method: :patch do |f| %>
 				<tr>
-					<td>氏名</td>
-					<td>
+					<td class="warning">氏名</td>
+					<td class="active">
 						(姓)<%= f.text_field :family_name %>
 						(名)<%= f.text_field :first_name %>
 					</td>
 				</tr>
 				<tr>
-					<td>フリガナ</td>
-					<td>
+					<td class="warning">フリガナ</td>
+					<td class="active">
 						(セイ)<%= f.text_field :kana_family_name %>
 						(メイ)<%= f.text_field :kana_first_name %>
 					</td>
 				</tr>
 				<tr>
-					<td>郵便番号(ハイフンなし)</td>
-					<td><%= f.text_field :postal_code %></td>
+					<td class="warning">郵便番号(ハイフンなし)</td>
+					<td class="active"><%= f.text_field :postal_code %></td>
 				</tr>
 				<tr>
-					<td>住所</td>
-					<td><%= f.text_field :address %></td>
+					<td class="warning">住所</td>
+					<td class="active"><%= f.text_field :address %></td>
 				</tr>
 				<tr>
-					<td>電話番号</td>
-					<td><%= f.text_field :phone_number %></td>
+					<td class="warning">電話番号</td>
+					<td class="active"><%= f.text_field :phone_number %></td>
 				</tr>
 				<tr>
-					<td>メールアドレス</td>
-					<td><%= f.text_field :email %></td>
+					<td class="warning">メールアドレス</td>
+					<td class="active"><%= f.text_field :email %></td>
 				</tr>
 				<tr>
-					<td>会員ステータス</td>
-					<td>
+					<td class="warning">会員ステータス</td>
+					<td class="active">
 						<%= f.radio_button :is_active, true %>
 						<%= f.label :is_active,"有効", {value: true, style: "display: inline-block;"} %>
 						<%= f.radio_button :is_active, false %>
@@ -52,7 +54,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td><%= f.submit  "変更を保存する",class: "btn btn-primary" %></td>
+					<td><%= f.submit "変更を保存する", class: "btn btn-primary" %></td>
 				</tr>
 				<% end %>
 			</table>
