@@ -13,6 +13,7 @@
 					<td class="warning">顧客ID</td>
 					<td class="active"><%= @customer.id %></td>
 				</tr>
+
 				<%= form_with model: @customer, url:admin_customer_path(@customer.id), local: true, method: :patch do |f| %>
 				<tr>
 					<td class="warning">氏名</td>

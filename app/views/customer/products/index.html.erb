@@ -26,11 +26,8 @@
                                         <span class="glyphicon glyphicon-heart-empty"><%= product.favorites.count %></span>
                                     <% end %>
                                 <% end %>
-                            <%# <% else %>
-                                <%# <p>お気に入りには会員登録が必要です</p>
-                                 <%= link_to new_customer_registration_path %>
-                                        <%# <span class="glyphicon glyphicon-heart"><%= product.favorites.count%></span>
-                                <%# <% end %> 
+                            <% else %>
+                                    <span class="glyphicon glyphicon-heart-empty"><%= @product.favorites.count %></span>
                             <% end %>
                         </div>
                     <% end %>

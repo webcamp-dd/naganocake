@@ -4,9 +4,8 @@
         <h3>登録情報編集</h3>
         <div class="col-xs-1"></div>
         <div class="col-xs-7">
-            <table class="table table-hover">
-                <%= form_for(@customer) do |f| %>
-                
+            <table class="table">
+                <%= form_with(model: @customer, url: customer_customer_path, local: :true, html: {method: :patch}) do |f| %>
                     <tr>
                         <th>
                             <p>名前</p>
@@ -33,28 +32,29 @@
                     </tr>
                     <tr>
                         <th>
+                            <p>電話番号(ハイフンなし)</p>
+                        </th>
+                        <td>
+                            <p><%= f.text_field :phone_number %></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             <p>郵便番号(ハイフンなし)</p>
                         </th>
                         <td>
-                            <%= f.text_field :postal_code %>
+                            <p><%= f.text_field :postal_code %></p>
                         </td>
                     </tr>
                     <tr>
                         <th>
                             <p>住所</p>
                         </th>
-                        <td>
-                            <%= f.text_field :address %>
+                        <td class="btn-right">
+                            <p><%= f.text_field :address, class:"form-control" %></p>
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            <p>電話番号(ハイフンなし)</p>
-                        </th>
-                        <td>
-                            <%= f.text_field :phone_number %>
-                        </td>
-                    </tr>
+                    
                     <tr>
                         <td>
                             <%= f.submit "編集内容を保存する" %>
