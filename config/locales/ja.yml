@@ -1,23 +1,28 @@
 ja:
   activerecord:
     models:
-        delivery:配送先
+        delivery: 配送先
+        product: 商品
+        product_category: 商品ジャンル
+        customer: 会員
     attributes:
       delivery:
         name: 宛先名
         postal_code: 郵便番号
         address: 住所
-
-
-ja:
-  activerecord:
-    models:
-        customers:会員
-    attributes:
-        amily_name:姓
-        first_name:名
-        kana_family_name:カナ姓
-        kana_first_name:カナ名
-        postal_code：郵便番号
-        address：住所
-        phone_number:電話番号
+      product:
+         name: 商品名
+         description: 商品説明文
+         unit_price: 単価
+         product_category: 商品ジャンル
+         sales_status: 販売ステータス
+      product_category:
+         name: ジャンル名
+      customer:
+         family_name: 姓
+         first_name: 名
+         kana_family_name: カナ姓
+         kana_first_name: カナ名
+         postal_code： 郵便番号
+         address： 住所
+         phone_number: 電話番号

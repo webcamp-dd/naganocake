@@ -13,7 +13,7 @@ class Product < ApplicationRecord
 	validates :name, 				 presence: true
 	validates :description,  presence: true
 	validates :unit_price, 	 presence: true
-	validates :sales_status, presence: true
+	# validates :sales_status, presence: true
 
 
 	
